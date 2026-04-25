@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grimorium</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>📜 Grimorium</h1>
+        <div class="filter-group">
+            <input type="text" id="searchName" placeholder="Name suchen...">
+            <select id="filterLevel">
+                <option value="">Alle Level</option>
+                <option value="0">Cantrip</option>
+                <option value="1">Level 1</option>
+                <option value="4">Level 4</option>
+            </select>
+        </div>
+    </header>
+
+    <div id="spell-list" class="spell-grid"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

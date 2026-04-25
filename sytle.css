@@ -1,0 +1,60 @@
+body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 20px;
+}
+
+header { text-align: center; margin-bottom: 30px; }
+
+.filter-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+input, select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #d4af37;
+    background: #2a2a2a;
+    color: white;
+}
+
+.spell-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.spell-card {
+    background: #262626;
+    border: 1px solid #444;
+    border-top: 4px solid #d4af37; /* Gold border for "Magic" feel */
+    padding: 15px;
+    border-radius: 4px;
+    transition: transform 0.2s;
+}
+
+.spell-card:hover { transform: translateY(-5px); }
+
+.spell-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h3 { color: #d4af37; margin: 0; }
+
+.level-badge {
+    background: #d4af37;
+    color: black;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.meta { font-size: 0.9rem; color: #aaa; }
+.classes { font-size: 0.85rem; color: #88c0d0; }
+.source { font-size: 0.75rem; color: #666; text-align: right; }
