@@ -14,6 +14,7 @@
     },
     {
         "name": "Ablenkung",
+        "castingTime": "Action",
         "level": 5,
         "classes": ["Hexenmeister", "Magier", "Barde"],
         "components": ["Sprachliche"],
@@ -22,5 +23,35 @@
         "ritual": false,
         "school": "Illusion",
         "source": "PHB (2024)"
+    },
+    {
+        "name": "Alarm",
+        "castingTime": "1 Minute",
+        "classes": ["Magier", "Waldläufer"],
+        "components": ["Verbal", "Geste", "Material"],
+        "concentration": false,
+        "level": 1,
+        "materials": "Glocke und Silberdraht",
+        "range/area": "9 Meter",
+        "ritual": true,
+        "school": "Bann",
+        "source":"PHB (2024)"
+    },
+    {
+        "name": "Ansteckung",
+        "castingTime": "Action",
+        "classes": ["Druide", "Kleriker"],
+        "components": ["Verbal", "Geste"],
+        "damage": "11d8",
+        "damageType": "Nekrotisch",
+        "save": "Konstitution",
+        "onSuccesfulSave": "Kein Effekt",
+        "concentration": false,
+        "level": 5,
+        "range/area": "Berührung",
+        "ritual": false,
+        "school": "Nekromantie",
+        "source":"PHB (2024)",
+        "desc": "Bei einem fehlgeschlagenem KON-Rettungswurf, erleidet das Ziel, 11d8 nekrotischen Schaden, ist vergiftet und hat Nachteil auf einem von dem Zauberwirker ausgewähltem Attribut"
     }
 ]
