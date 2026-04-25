@@ -86,11 +86,15 @@ function resetFilters() {
     renderSpells(spells); // Show everything again
 }
 
-// Event Listeners
-document.getElementById('searchName').addEventListener('input', filterData);
-document.getElementById('filterLevel').addEventListener('change', filterData);
-document.getElementById('filterClass').addEventListener('change', filterData);
-document.getElementById('filterSchool').addEventListener('change', filterData);
+// This makes sure the browser is ready
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Initial Load of your JSON
+    loadSpells();
 
-// Initial Load
-loadSpells();
+    // Attach the listeners
+    document.getElementById('searchName').addEventListener('input', filterData);
+    document.getElementById('filterLevel').addEventListener('change', filterData);
+    document.getElementById('filterClass').addEventListener('change', filterData);
+    document.getElementById('filterSchool').addEventListener('change', filterData);
+});
