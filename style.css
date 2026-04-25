@@ -54,6 +54,33 @@ h3 { color: #d4af37; margin: 0; }
     font-size: 0.8rem;
     font-weight: bold;
 }
+.spell-tags {
+    margin-bottom: 5px;
+    display: flex;
+    gap: 5px;
+}
+
+.tag {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+    color: white;
+}
+
+.ritual { background-color: #4a90e2; } /* Blue for Ritual */
+.concentration { background-color: #e67e22; } /* Orange for Concentration */
+
+.spell-stats {
+    background: #1a1a1a;
+    padding: 8px;
+    border-radius: 4px;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    border-left: 2px solid #444;
+}
+
+.spell-stats p { margin: 5px 0; }
 
 .meta { font-size: 0.9rem; color: #aaa; }
 .classes { font-size: 0.85rem; color: #88c0d0; }

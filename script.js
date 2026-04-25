@@ -14,25 +14,58 @@ async function loadSpells() {
 // 2. Display the spells (Use your existing renderSpells code here)
 function renderSpells(data) {
     const container = document.getElementById('spell-list');
-    if (!container) return; // Safety check
+    if (!container) return;
 
     container.innerHTML = data.map(spell => {
-        const components = spell.components ? spell.components.join(', ') : 'Keine';
+        // 1. Setup basic safety for Arrays and Keys
         const classes = spell.classes ? spell.classes.join(', ') : 'Keine';
+        const components = spell.components ? spell.components.join(', ') : 'S, V';
         const range = spell['range/area'] || 'N/A';
 
+        // 2. Logic for Saving Throws and "Success" effects
+        let saveHtml = '';
+        if (spell.save) {
+            let successText = spell.onSuccess;
+            if (spell.onSuccess === 'half') {
+                successText = 'Halber Schaden bei Erfolg';
+            } else if (!spell.onSuccess) {
+                successText = 'Kein Effekt bei Erfolg';
+            }
+            saveHtml = `
+                <p class="save-info">
+                    <strong>RW:</strong> ${spell.save} 
+                    <br><small>(${successText})</small>
+                </p>
+            `;
+        }
+
+        // 3. Construct the HTML Card
         return `
             <div class="spell-card">
                 <div class="spell-header">
                     <h3>${spell.name}</h3>
                     <span class="level-badge">Lvl ${spell.level}</span>
                 </div>
+                
+                <div class="spell-tags">
+                    ${spell.ritual ? '<span class="tag ritual">R</span>' : ''}
+                    ${spell.concentration ? '<span class="tag concentration">K</span>' : ''}
+                </div>
+
                 <p class="meta"><em>${spell.school} • ${range}</em></p>
+                
+                <div class="spell-stats">
+                    ${spell.damage ? `<p><strong>Schaden:</strong> ${spell.damage} ${spell.damageType ? `(${spell.damageType})` : ''}</p>` : ''}
+                    ${spell.effect ? `<p><strong>Effekt:</strong> ${spell.effect}</p>` : ''}
+                    ${saveHtml}
+                </div>
+
                 <div class="spell-details">
-                    <p><strong>Zeit:</strong> ${spell.castingTime || 'Unbekannt'}</p>
+                    <p><strong>Zeit:</strong> ${spell.castingTime || '1 Aktion'}</p>
                     <p><strong>Komponenten:</strong> ${components}</p>
                     ${spell.materials ? `<p class="materials"><em>M: ${spell.materials}</em></p>` : ''}
                 </div>
+
                 <p class="classes"><strong>Klassen:</strong> ${classes}</p>
                 <p class="source">${spell.source || ''}</p>
             </div>

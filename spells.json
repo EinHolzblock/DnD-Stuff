@@ -1,3 +1,26 @@
 [
-    { "name": "Aberration herbeirufen", "level": 4, "school": "Beschwörung", "classes": ["Hexenmeister", "Magier"], "castingTime": "Action", "components": ["Verbal", "Geste", "Material"], "materials": "Ein eingelegtes Tentakel und ein Augapfel in einer Viole mit einem Platinintarsie im Wert von mindestens 400GM", "range/area": "27 Meter", "source": "PHB (2024)", "concentration": "Yes"}
+    { 
+        "name": "Aberration herbeirufen", 
+        "level": 4, 
+        "school": "Beschwörung", 
+        "classes": ["Hexenmeister", "Magier"], 
+        "castingTime": "Action", 
+        "components": ["Verbal", "Geste", "Material"], 
+        "materials": "Ein eingelegtes Tentakel und ein Augapfel in einer Viole mit einem Platinintarsie im Wert von mindestens 400GM", 
+        "range/area": "27 Meter", 
+        "source": "PHB (2024)",
+        "concentration": true,
+        "ritual": false
+    },
+    {
+        "name": "Ablenkung",
+        "level": 5,
+        "classes": ["Hexenmeister", "Magier", "Barde"],
+        "components": ["Sprachliche"],
+        "concentration": true,
+        "range/area": "Selbst",
+        "ritual": false,
+        "school": "Illusion",
+        "source": "PHB (2024)"
+    }
 ]
