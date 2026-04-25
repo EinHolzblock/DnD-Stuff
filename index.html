@@ -12,11 +12,39 @@
         <h1>📜 Grimorium</h1>
         <div class="filter-group">
             <input type="text" id="searchName" placeholder="Name suchen...">
+            <button onclick="resetFilters()">Reset</button>
             <select id="filterLevel">
                 <option value="">Alle Level</option>
                 <option value="0">Cantrip</option>
                 <option value="1">Level 1</option>
+                <option value="2">Level 2</option>
+                <option value="3">Level 3</option>
                 <option value="4">Level 4</option>
+                <option value="5">Level 5</option>
+                <option value="6">Level 6</option>
+                <option value="7">Level 7</option>
+                <option value="8">Level 8</option>
+                <option value="9">Level 9</option>
+            </select>
+
+            <select id="filterClass">
+                <option value="">Alle Klassen</option>
+                <option value="">Hexenmeister</option>
+                <option value="">Magier</option>
+                <option value="">Barde</option>
+                <option value="">Waldläufer</option>
+                <option value="">Druide</option>
+                <option value="">Kleriker</option>
+            </select>
+
+            <select id="filterSchool">
+                <option value="">Alle Schulen</option>
+                <option value="">Beschwörung</option>
+                <option value="">Hervorrufung</option>
+                <option value="">Illusion</option>
+                <option value="">Bann</option>
+                <option value="">Nekromantie</option>
+                <option value="">Verzauberung</option>
             </select>
         </div>
     </header>
