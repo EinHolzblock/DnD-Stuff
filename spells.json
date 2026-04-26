@@ -10,7 +10,8 @@
         "range/area": "27 Meter", 
         "source": "PHB (2024)",
         "concentration": true,
-        "ritual": false
+        "ritual": false,
+        "duration": "Konzentration, bis zu 1 Stunde"
     },
     {
         "name": "Ablenkung",
@@ -22,7 +23,8 @@
         "range/area": "Selbst",
         "ritual": false,
         "school": "Illusion",
-        "source": "PHB (2024)"
+        "source": "PHB (2024)",
+        "duration": "Konzentration, bis zu 1 Stunde"
     },
     {
         "name": "Alarm",
@@ -35,7 +37,8 @@
         "range/area": "9 Meter",
         "ritual": true,
         "school": "Bann",
-        "source":"PHB (2024)"
+        "source":"PHB (2024)",
+        "duration": "8 Stunden"
     },
     {
         "name": "Ansteckung",
@@ -52,7 +55,8 @@
         "ritual": false,
         "school": "Nekromantie",
         "source":"PHB (2024)",
-        "desc": "Bei einem fehlgeschlagenem KON-Rettungswurf, erleidet das Ziel, 11d8 nekrotischen Schaden, ist vergiftet und hat Nachteil auf einem von dem Zauberwirker ausgewähltem Attribut"
+        "desc": "Bei einem fehlgeschlagenem KON-Rettungswurf, erleidet das Ziel, 11d8 nekrotischen Schaden, ist vergiftet und hat Nachteil auf einem von dem Zauberwirker ausgewähltem Attribut",
+        "duration": "7 Tage"
     },
     {
         "name": "Antimagisches Feld",
@@ -73,6 +77,15 @@
         "castingTime": "1 Stunde",
         "classes": ["Barde", "Druide", "Magier"],
         "components": ["Verbal", "Geste", "Material"],
-        "concentration": false
+        "concentration": false,
+        "duration": "10 Tage",
+        "level": 8,
+        "materials": "Eine Mischung aus Essig und Honig",
+        "range/area": "18 Meter",
+        "ritual": false,
+        "save": "Weisheit",
+        "onSuccesfulSave": "Effekt beenden",
+        "school": "Verzauberung",
+        "source":"PHB (2024)"
     }
 ]
