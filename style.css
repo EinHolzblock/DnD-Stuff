@@ -104,6 +104,12 @@ h3 { color: #d4af37; margin: 0; }
     white-space: pre-line; /* CRITICAL: This respects line breaks (\n) in your JSON */
 }
 
+.meta small {
+    display: block;
+    margin-top: 4px;
+    color: #ffd700; /* Goldish color for visibility */
+    font-size: 0.8rem;
+}
 
 .spell-stats p { margin: 5px 0; }
 

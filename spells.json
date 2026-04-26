@@ -53,5 +53,26 @@
         "school": "Nekromantie",
         "source":"PHB (2024)",
         "desc": "Bei einem fehlgeschlagenem KON-Rettungswurf, erleidet das Ziel, 11d8 nekrotischen Schaden, ist vergiftet und hat Nachteil auf einem von dem Zauberwirker ausgewähltem Attribut"
+    },
+    {
+        "name": "Antimagisches Feld",
+        "castingTime": "Action",
+        "classes": ["Kleriker", "Magier"],
+        "components": ["Verbal", "Geste", "Material"],
+        "concentration": true,
+        "level": 8,
+        "materials": "Eisenspäne",
+        "range/area": "Selbst",
+        "ritual": false,
+        "school": "Bann",
+        "source":"PHB (2024)",
+        "duration": "Konzentration, bis zu 1 Stunde"
+    },
+    {
+        "name": "Antipathie/Sympathie",
+        "castingTime": "1 Stunde",
+        "classes": ["Barde", "Druide", "Magier"],
+        "components": ["Verbal", "Geste", "Material"],
+        "concentration": false
     }
 ]

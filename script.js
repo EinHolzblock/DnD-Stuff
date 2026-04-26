@@ -45,7 +45,9 @@ function renderSpells(data) {
                     ${spell.concentration ? '<span class="tag concentration">K</span>' : ''}
                 </div>
 
-                <p class="meta"><em>${spell.school} • ${range}</em></p>
+                <p class="meta"><em>${spell.school} • ${range}</em><br>
+                <small>⌛ Wirkungsdauer: ${spell.duration || 'Augenblicklich'}</small>
+                </p>
                 
                 <div class="spell-stats">
                     ${spell.damage ? `<p><strong>Schaden:</strong> ${spell.damage} (${spell.damageType})</p>` : ''}
