@@ -38,7 +38,10 @@ function renderSpells(data) {
             <div class="spell-card">
                 <div class="spell-header">
                     <h3>${spell.name}</h3>
-                    <span class="level-badge">Lvl ${spell.level}</span>
+                    <div class="header-actions">
+                        <button class="add-btn" onclick="addToSpellbook('${spell.name}')">+</button>
+                        <span class="level-badge">Lvl ${spell.level}</span>
+                    </div>
                 </div>
                 
                 <div class="spell-tags">
@@ -47,7 +50,7 @@ function renderSpells(data) {
                 </div>
 
                 <p class="meta"><em>${spell.school} • ${range}</em><br>
-                <small>⌛ Wirkungsdauer:  ${spell.duration || 'Unmittelbar'}</small>
+                    <small>⌛ Wirkungsdauer: ${spell.duration || 'Unmittelbar'}</small>
                 </p>
                 
                 <div class="spell-stats">
@@ -71,15 +74,7 @@ function renderSpells(data) {
 
                 <p class="classes"><strong>Klassen:</strong> ${classes}</p>
                 <p class="source">${spell.source || ''}</p>
-            </div>
-            
-            <div class="spell-card">
-            <div class="spell-header">
-                <h3>${spell.name}</h3>
-                <button class="add-btn" onclick="addToSpellbook('${spell.name}')">➕</button> <span class="level-badge">Lvl ${spell.level}</span>
-            </div>
-    ...
-        `;
+            </div> `;
     }).join('');
 }
 
