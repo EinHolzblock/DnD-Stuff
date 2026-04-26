@@ -1,4 +1,5 @@
 let spells = [];
+let mySpellbook = JSON.parse(localStorage.getItem('mySpellbook')) || [];
 
 // 1. Load the JSON data
 async function loadSpells() {
@@ -71,8 +72,70 @@ function renderSpells(data) {
                 <p class="classes"><strong>Klassen:</strong> ${classes}</p>
                 <p class="source">${spell.source || ''}</p>
             </div>
+            
+            <div class="spell-card">
+            <div class="spell-header">
+                <h3>${spell.name}</h3>
+                <button class="add-btn" onclick="addToSpellbook('${spell.name}')">➕</button> <span class="level-badge">Lvl ${spell.level}</span>
+            </div>
+    ...
         `;
     }).join('');
+}
+
+// --- SPELLBOOK & TOOLTIP LOGIC ---
+const tooltip = document.getElementById('tooltip');
+
+function showTooltip(e, spellName) {
+    const spell = spells.find(s => s.name === spellName);
+    if (!spell) return;
+    tooltip.innerHTML = `
+        <div style="border-bottom:1px solid #d4af37; margin-bottom:5px;"><strong>${spell.name}</strong></div>
+        <small>${spell.school} • ${spell.level === 0 ? 'Zaubertrick' : 'Lvl ' + spell.level}</small>
+        <p style="font-size: 0.8rem; margin-top:5px;">${spell.desc ? spell.desc.substring(0, 150) + '...' : 'Keine Beschreibung'}</p>
+    `;
+    tooltip.classList.remove('hidden');
+    moveTooltip(e);
+}
+
+function moveTooltip(e) {
+    tooltip.style.left = (e.clientX + 15) + 'px';
+    tooltip.style.top = (e.clientY + 15) + 'px';
+}
+
+function hideTooltip() { tooltip.classList.add('hidden'); }
+
+function addToSpellbook(name) {
+    if (!mySpellbook.includes(name)) {
+        mySpellbook.push(name);
+        saveAndRenderSpellbook();
+    }
+}
+
+function removeFromSpellbook(name) {
+    mySpellbook = mySpellbook.filter(s => s !== name);
+    saveAndRenderSpellbook();
+}
+
+function saveAndRenderSpellbook() {
+    localStorage.setItem('mySpellbook', JSON.stringify(mySpellbook));
+    const list = document.getElementById('spellbook-list');
+    if (!list) return;
+    
+    if (mySpellbook.length === 0) {
+        list.innerHTML = '<p style="color:#666; font-size:0.8rem;">Noch keine Zauber...</p>';
+        return;
+    }
+
+    list.innerHTML = mySpellbook.map(name => `
+        <div class="spellbook-item" 
+             onmousemove="moveTooltip(event)" 
+             onmouseenter="showTooltip(event, '${name}')" 
+             onmouseleave="hideTooltip()">
+            <span>${name}</span>
+            <span class="remove-btn" onclick="removeFromSpellbook('${name}')">×</span>
+        </div>
+    `).join('');
 }
 
 // 3. Search and Filter Logic
@@ -106,6 +169,7 @@ function resetFilters() {
 // 5. ATTACH LISTENERS ONLY WHEN DOM IS READY
 document.addEventListener('DOMContentLoaded', () => {
     loadSpells();
+    saveAndRenderSpellbook();
 
     // Select all inputs and add listeners automatically
     const searchInput = document.getElementById('searchName');

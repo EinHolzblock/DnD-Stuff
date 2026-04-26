@@ -111,6 +111,46 @@ h3 { color: #d4af37; margin: 0; }
     font-size: 0.8rem;
 }
 
+/* The Sidebar */
+#spellbook-sidebar {
+    position: fixed;
+    right: 0; top: 0;
+    width: 250px; height: 100%;
+    background: #111;
+    border-left: 2px solid #d4af37;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+.spellbook-item {
+    background: #222;
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    cursor: help; /* Shows the user they can hover */
+    border-left: 3px solid #d4af37;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remove-btn { color: #ff4444; cursor: pointer; font-weight: bold; }
+
+/* The Floating Tooltip */
+#tooltip {
+    position: fixed;
+    pointer-events: none; /* So it doesn't block the mouse */
+    background: #262626;
+    border: 2px solid #d4af37;
+    padding: 15px;
+    border-radius: 8px;
+    width: 300px;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.hidden { display: none; }
+
 .spell-stats p { margin: 5px 0; }
 
 .meta { font-size: 0.9rem; color: #aaa; }
