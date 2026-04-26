@@ -80,6 +80,31 @@ h3 { color: #d4af37; margin: 0; }
     border-left: 2px solid #444;
 }
 
+.spell-desc {
+    margin: 10px 0;
+    padding: 8px;
+    background: #121212;
+    border-radius: 4px;
+    border: 1px solid #333;
+}
+
+.spell-desc summary {
+    cursor: pointer;
+    color: #d4af37;
+    font-size: 0.85rem;
+    font-weight: bold;
+    outline: none;
+}
+
+.desc-content {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #ccc;
+    white-space: pre-line; /* CRITICAL: This respects line breaks (\n) in your JSON */
+}
+
+
 .spell-stats p { margin: 5px 0; }
 
 .meta { font-size: 0.9rem; color: #aaa; }
