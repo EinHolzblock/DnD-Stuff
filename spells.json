@@ -2,7 +2,7 @@
     { 
         "name": "Aberration herbeirufen", 
         "level": 4, 
-        "school": "Beschwörung", 
+        "school": "Beschwörungsmagie", 
         "classes": ["Hexenmeister", "Magier"], 
         "castingTime": "Action", 
         "components": ["Verbal", "Geste", "Material"], 
@@ -22,7 +22,7 @@
         "concentration": true,
         "range/area": "Selbst",
         "ritual": false,
-        "school": "Illusion",
+        "school": "Illusionsmagie",
         "source": "PHB (2024)",
         "duration": "Konzentration, bis zu 1 Stunde"
     },
@@ -36,7 +36,7 @@
         "materials": "Glocke und Silberdraht",
         "range/area": "9 Meter",
         "ritual": true,
-        "school": "Bann",
+        "school": "Bannmagie",
         "source":"PHB (2024)",
         "duration": "8 Stunden"
     },
@@ -68,7 +68,7 @@
         "materials": "Eisenspäne",
         "range/area": "Selbst",
         "ritual": false,
-        "school": "Bann",
+        "school": "Bannmagie",
         "source":"PHB (2024)",
         "duration": "Konzentration, bis zu 1 Stunde"
     },
@@ -85,7 +85,32 @@
         "ritual": false,
         "save": "Weisheit",
         "onSuccesfulSave": "Effekt beenden",
-        "school": "Verzauberung",
+        "school": "Verzauberungsmagie",
+        "source":"PHB (2024)"
+    },
+    {
+        "name": "Arkane Spiegelung",
+        "castingTime": "10 Minuten",
+        "classes": ["Barde", "Druide", "Magier"],
+        "components": ["Verbal", "Geste"],
+        "concentration": false,
+        "level": 7,
+        "range/area": "Sight",
+        "ritual": false,
+        "duration": "10 Tage",
+        "school": "Illusionsmagie",
+        "source":"PHB (2024)"
+    },
+    {
+        "name": "Arkane Vitalität",
+        "castingTime": "Bonusaction",
+        "classes": ["Magier", "Zauberer"],
+        "components": ["Verbal", "Geste"],
+        "concentration": false,
+        "level": 2,
+        "range/area": "Selbst",
+        "ritual": false,
+        "school": "Bannmagie",
         "source":"PHB (2024)"
     }
 ]

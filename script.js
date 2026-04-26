@@ -46,7 +46,7 @@ function renderSpells(data) {
                 </div>
 
                 <p class="meta"><em>${spell.school} • ${range}</em><br>
-                <small>⌛ Wirkungsdauer:  ${spell.duration || 'Augenblicklich'}</small>
+                <small>⌛ Wirkungsdauer:  ${spell.duration || 'Unmittelbar'}</small>
                 </p>
                 
                 <div class="spell-stats">
