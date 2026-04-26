@@ -17,29 +17,22 @@ function renderSpells(data) {
     if (!container) return;
 
     container.innerHTML = data.map(spell => {
-        // 1. Setup basic safety for Arrays and Keys
         const classes = spell.classes ? spell.classes.join(', ') : 'Keine';
-        const components = spell.components ? spell.components.join(', ') : 'S, V';
+        const components = spell.components ? spell.components.join(', ') : 'V, S';
         const range = spell['range/area'] || 'N/A';
+        
+        // Handle Casting Time + Ritual logic
+        const timeDisplay = spell.ritual 
+            ? `${spell.castingTime || '1 Aktion'} (oder Ritual)` 
+            : (spell.castingTime || '1 Aktion');
 
-        // 2. Logic for Saving Throws and "Success" effects
+        // Handle Saving Throw logic
         let saveHtml = '';
         if (spell.save) {
-            let successText = spell.onSuccess;
-            if (spell.onSuccess === 'half') {
-                successText = 'Halber Schaden bei Erfolg';
-            } else if (!spell.onSuccess) {
-                successText = 'Kein Effekt bei Erfolg';
-            }
-            saveHtml = `
-                <p class="save-info">
-                    <strong>RW:</strong> ${spell.save} 
-                    <br><small>(${successText})</small>
-                </p>
-            `;
+            const successText = spell.onSuccess === 'half' ? 'Halber Schaden' : (spell.onSuccess || 'Kein Effekt');
+            saveHtml = `<p class="save-info"><strong>RW:</strong> ${spell.save} <small>(${successText})</small></p>`;
         }
 
-        // 3. Construct the HTML Card
         return `
             <div class="spell-card">
                 <div class="spell-header">
@@ -55,16 +48,23 @@ function renderSpells(data) {
                 <p class="meta"><em>${spell.school} • ${range}</em></p>
                 
                 <div class="spell-stats">
-                    ${spell.damage ? `<p><strong>Schaden:</strong> ${spell.damage} ${spell.damageType ? `(${spell.damageType})` : ''}</p>` : ''}
+                    ${spell.damage ? `<p><strong>Schaden:</strong> ${spell.damage} (${spell.damageType})</p>` : ''}
                     ${spell.effect ? `<p><strong>Effekt:</strong> ${spell.effect}</p>` : ''}
                     ${saveHtml}
                 </div>
 
                 <div class="spell-details">
-                    <p><strong>Zeit:</strong> ${spell.castingTime || '1 Aktion'}</p>
+                    <p><strong>Zeit:</strong> ${timeDisplay}</p>
                     <p><strong>Komponenten:</strong> ${components}</p>
                     ${spell.materials ? `<p class="materials"><em>M: ${spell.materials}</em></p>` : ''}
                 </div>
+
+                ${spell.desc ? `
+                <details class="spell-desc">
+                    <summary>Beschreibung anzeigen</summary>
+                    <div class="desc-content">${spell.desc}</div>
+                </details>
+                ` : ''}
 
                 <p class="classes"><strong>Klassen:</strong> ${classes}</p>
                 <p class="source">${spell.source || ''}</p>
