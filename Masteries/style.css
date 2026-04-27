@@ -144,6 +144,14 @@ button:hover {
     font-size: 0.95em;
 }
 
+.description-text {
+    color: #ddd;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+
 .mastery-tag {
     align-self: flex-start;
     background: #442222;
