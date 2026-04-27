@@ -43,23 +43,44 @@ function closeModal() {
 function render(list) {
     const container = document.getElementById('item-grid');
     container.innerHTML = '';
+
     list.forEach(i => {
         const div = document.createElement('div');
         div.className = 'card';
         
+        // 1. Determine specific details based on category
+        let details = "";
+        if (i.category === "Weapon") {
+            details = `<p><b>Schaden:</b> ${i.damage || '-'}</p>`;
+        } else if (i.category === "Armor") {
+            details = `<p><b>RK (AC):</b> ${i.ac || '-'}</p>`;
+        } else {
+            // For general gear, show description if properties is empty
+            details = i.description ? `<p class="description-text">${i.description}</p>` : "";
+        }
+
+        // 2. Setup the Mastery button
         const masteryBtn = i.mastery 
-            ? `<button class="mastery-tag" onclick="openMasteryModal('${i.mastery}')" style="cursor: pointer; border: 1px solid #663333;">
+            ? `<button class="mastery-tag" onclick="openMasteryModal('${i.mastery}')" style="cursor: pointer; border: 1px solid #663333; margin-top: 10px; width: 100%;">
                  ✨ ${i.mastery} (Info)
                </button>` 
             : '';
 
+        // 3. Assemble the card
         div.innerHTML = `
-            <h3>${i.name}</h3>
-            <p><b>Typ:</b> ${i.type}</p>
-            <p><b>Preis:</b> ${i.cost || '-'}</p>
-            <p class="description-text">${i.properties || ''}</p>
+            <div class="card-content">
+                <h3>${i.name}</h3>
+                <p><b>Typ:</b> ${i.type}</p>
+                <p><b>Preis:</b> ${i.cost || '-'} | <b>Gewicht:</b> ${i.weight || '-'}</p>
+                
+                ${details} 
+                
+                <p class="description-text">${i.properties || ''}</p>
+            </div>
+            
             ${masteryBtn}
-            <span class="source-tag">${i.source}</span>
+            
+            <span class="source-tag" style="display: block; margin-top: 10px;">${i.source}</span>
         `;
         container.appendChild(div);
     });

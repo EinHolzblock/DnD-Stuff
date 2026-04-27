@@ -1,1 +1,41 @@
-
+[
+    {
+        "name": "Beil",
+        "category": "Weapon",
+        "type": "Simple Melee Weapon",
+        "cost": "5 GM",
+        "weight": "1 kg",
+        "damage": "1d6 Hieb",
+        "ac": "",
+        "properties": "Leicht, Wurfwaffe (Reichweite 6/18)",
+        "mastery": "Plagen",
+        "description": "",
+        "source": "PHB 2024"
+    },
+    {
+        "name": "Dolch",
+        "category": "Weapon",
+        "type": "Simple Melee Weapon",
+        "cost": "2 GM",
+        "weight": "0,5 kg",
+        "damage": "1d4 Stich",
+        "ac": "",
+        "properties": "Leicht, Finesse, Wurfwaffe (Reichweite 6/18)",
+        "mastery": "Einkerben",
+        "description": "",
+        "source": "PHB 2024"
+    },
+    {
+        "name": "Kampfstab",
+        "category": "Weapon",
+        "type": "Simple Melee Weapon",
+        "cost": "2 SM",
+        "weight": "2kg",
+        "damage": "1d6 Wucht",
+        "ac": "",
+        "properties": "Versatile (1d8)",
+        "mastery": "Umstoßen",
+        "description": "",
+        "source": "PHB 2024"
+    }
+]
