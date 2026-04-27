@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
+
 <div id="nav-container">
   <div id="hamburger" onclick="toggleMenu()">☰</div>
   <div id="nav-menu" class="hidden">
@@ -13,26 +14,23 @@
     <a href="../../index.html">🏠 Hauptmenü</a>
   </div>
 </div>
+
 <header id="main-header">
   <h1>⚒️ Base Arsenal</h1>
   <div class="filter-group">
     <input type="text" id="searchName" placeholder="Gegenstand suchen..." onkeyup="applyFilters()">
     <select id="filterType" onchange="applyFilters()">
-      <option value="">Alle Typen</option>
-      <option value="Ausrüstung">Ausrüstung</option>
-      <option value="Rüstung">Rüstung</option>
-      <option value="Werkzeug">Werkzeug</option>
+      <option value="">Alle Kategorien</option>
+      <option value="Weapon">Waffen</option>
+      <option value="Armor">Rüstungen</option>
+      <option value="Gear">Ausrüstung</option>
     </select>
   </div>
 </header>
-<main><div id="item-grid" class="spell-grid"></div></main>
-  <div id="mastery-modal" class="modal-overlay hidden" onclick="closeModal()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <span class="close-btn" onclick="closeModal()">&times;</span>
-    <div id="modal-body">
-      </div>
-  </div>
-</div>
+
+<main>
+    <div id="item-grid" class="spell-grid"></div>
+</main>
 
 <script src="script.js"></script>
 </body>
