@@ -2,12 +2,14 @@ let waffenDaten = []; // Globaler Speicher für die geladenen Daten
 
 // 1. Daten beim Laden der Seite abrufen
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('weapons.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("HTTP Fehler " + response.status);
-            }
-            return response.json();
+    // In deiner script.js den fetch-Teil leicht anpassen:
+fetch('weapons.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Datei nicht gefunden (Status: ${response.status})`);
+        }
+        return response.json();
+    })
         })
         .then(data => {
             waffenDaten = data;
