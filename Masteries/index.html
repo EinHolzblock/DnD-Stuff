@@ -12,47 +12,42 @@
   <div id="hamburger" onclick="toggleMenu()">☰</div>
   <div id="nav-menu" class="hidden">
     <a href="#" onclick="showPage('masteries')">⚔️ Meisterschaften</a>
-    <a href="mastery-descriptions.html">📖 Beschreibungen einzelner Meistereigenschaften</a>
+    <a href="mastery-descriptions.html">📖 Meistereigenschaften</a>
     <a href="../index.html">🏠 Zurück zum Hauptmenü</a>
   </div>
 </div>
 
 <header id="main-header">
   <h1>⚔️ Waffenmeisterschaften</h1>
-
   <div class="filter-group">
     <div class="search-bar">
-      <input type="text" id="searchName" placeholder="Waffenname (z.B. Langschwert)..." onkeyup="filterWeapons()">
-      <input type="text" id="searchMastery" placeholder="Eigenschaft (z.B. Cleave)..." onkeyup="filterWeapons()">
+      <input type="text" id="searchName" placeholder="Waffenname...">
+      <input type="text" id="searchMastery" placeholder="Eigenschaft...">
     </div>
-
     <div class="select-filters">
-      <select id="filterType" onchange="filterWeapons()">
-        <option value="">Alle Waffenarten</option>
-        <option value="Melee">Nahkampf (Melee)</option>
-        <option value="Ranged">Fernkampf (Ranged)</option>
+      <select id="filterType">
+        <option value="">Nahkampf & Fernkampf</option>
+        <option value="Melee">⚔️ Nahkampf</option>
+        <option value="Ranged">🏹 Fernkampf</option>
       </select>
-
-      <select id="filterCategory" onchange="filterWeapons()">
-        <option value="">Alle Kategorien</option>
+      <select id="filterCategory">
+        <option value="">Einfach & Kriegswaffen</option>
         <option value="Simple">Einfach</option>
         <option value="Martial">Kriegswaffen</option>
       </select>
-
-      <select id="filterMastery" onchange="filterWeapons()">
+      <select id="filterMastery">
         <option value="">Alle Meistereigenschaften</option>
-        <option value="Cleave">Spalten (Cleave)</option>
-        <option value="Topple">Umwerfen (Topple)</option>
-        <option value="Nick">Einkerben (Nick)</option>
-        <option value="Graze">Streifen (Graze)</option>
-        <option value="Push">Stoßen (Push)</option>
-        <option value="Slow">Verlangsamen (Slow)</option>
-        <option value="Vex">Plagen (Vex)</option>
-        <option value="Sap">Schwächen (Sap)</option>
+        <option value="Spalten">Spalten (Cleave)</option>
+        <option value="Umstoßen">Umstoßen (Topple)</option>
+        <option value="Einkerben">Einkerben (Nick)</option>
+        <option value="Streifen">Streifen (Graze)</option>
+        <option value="Schieben">Schieben (Push)</option>
+        <option value="Verlangsamen">Verlangsamen (Slow)</option>
+        <option value="Plagen">Plagen (Vex)</option>
+        <option value="Schwächen">Schwächen (Sap)</option>
       </select>
     </div>
-
-    <button id="reset-btn" onclick="resetFilters()">Reset Filter</button>
+    <button id="reset-btn" onclick="resetFilters()">Reset</button>
   </div>
 </header>
 
@@ -63,19 +58,21 @@
 </main>
 
 <div id="tooltip" class="hidden"></div>
+
 <footer style="margin-top: 60px; font-size: 0.75rem; color: #555; border-top: 1px solid #333; padding: 20px; max-width: 800px; line-height: 1.4;">
-    <p>
-        Basierend auf dem System Reference Document (SRD) & 2024 Core Rules. <br>
-        Diese Website ist ein inoffizieller Fan-Inhalt, der im Rahmen der 
-        <a href="https://company.wizards.com/de/legal/fancontentpolicy" target="_blank" style="color: #777;">Richtlinie für Fan-Inhalte</a> 
-        zulässig ist. Nicht von Wizards gefördert oder endossiert. <br>
-        © Wizards of the Coast LLC.
-    </p>
-    <p>
-        Erstellt von EinHolzblock | 
-        <a href="CONTACT.md" style="color: #777; text-decoration: underline;">Kontakt & Impressum</a>
-    </p>
+  <p>
+    Basierend auf dem System Reference Document (SRD) & 2024 Core Rules. <br>
+    Diese Website ist ein inoffizieller Fan-Inhalt, der im Rahmen der
+    <a href="https://company.wizards.com/de/legal/fancontentpolicy" target="_blank" style="color: #777;">Richtlinie für Fan-Inhalte</a>
+    zulässig ist. Nicht von Wizards gefördert oder endossiert. <br>
+    © Wizards of the Coast LLC.
+  </p>
+  <p>
+    Erstellt von EinHolzblock |
+    <a href="../CONTACT.md" style="color: #777; text-decoration: underline;">Kontakt & Impressum</a>
+  </p>
 </footer>
+
 <script src="script.js"></script>
 </body>
 </html>
