@@ -1,42 +1,52 @@
-/* --- Global & Layout --- */
+/* --- Global & Variables --- */
+:root {
+    --bg-dark: #0f0c18;
+    --bg-card: #1a1625;
+    --accent: #9d4edd;
+    --accent-hover: #c77dff;
+    --text-main: #e0e0e0;
+    --text-dim: #a0a0a0;
+    --border: #2d283e;
+    --gold: #d4af37;
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #1e1e1e;
-    color: #eee;
+    background: var(--bg-dark);
+    color: var(--text-main);
     line-height: 1.5;
 }
 
+/* --- Navigation & Menu --- */
 #nav-container {
     padding: 10px 20px;
-    background: #333;
+    background: var(--bg-card);
     display: flex;
     align-items: center;
     gap: 15px;
     position: sticky;
     top: 0;
     z-index: 100;
+    border-bottom: 1px solid var(--border);
 }
 
 #hamburger {
     cursor: pointer;
     font-size: 24px;
+    color: var(--accent);
     user-select: none;
-}
-
-.hidden {
-    display: none;
 }
 
 #nav-menu {
     position: absolute;
     top: 50px;
     left: 10px;
-    background: #333;
+    background: var(--bg-card);
     padding: 10px;
-    border-radius: 4px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    border: 1px solid #444;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+    border: 1px solid var(--border);
 }
 
 #nav-menu a {
@@ -44,60 +54,56 @@ body {
     color: white;
     padding: 8px 15px;
     text-decoration: none;
-    transition: background 0.2s;
 }
 
 #nav-menu a:hover {
-    background: #444;
-    color: #00aaff;
+    background: #251f35;
+    color: var(--accent-hover);
 }
 
 /* --- Header & Filters --- */
 #main-header {
-    padding: 20px;
-    background: #222;
-    border-bottom: 1px solid #444;
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
 }
 
 #main-header h1 {
     margin: 0 0 15px 0;
-    font-size: 1.8rem;
+    font-size: 2rem;
+    color: var(--text-main);
 }
 
 .filter-group {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-}
-
-.search-bar, .select-filters {
-    display: flex;
-    gap: 10px;
 }
 
 input, select, button {
     padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #555;
-    background: #333;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
     color: white;
     outline: none;
 }
 
 input:focus, select:focus {
-    border-color: #00aaff;
+    border-color: var(--accent);
 }
 
 button {
     cursor: pointer;
-    background: #444;
     font-weight: bold;
-    border: 1px solid #666;
+    transition: 0.2s;
 }
 
 button:hover {
-    background: #555;
+    background: var(--accent);
+    border-color: var(--accent);
 }
 
 /* --- Grid & Cards --- */
@@ -105,43 +111,52 @@ button:hover {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
-    padding: 20px;
+    padding: 30px;
 }
 
 .card {
-    background: #2a2a2a;
-    padding: 15px;
-    border-radius: 6px;
-    border-left: 4px solid #555; 
-    transition: transform 0.2s, background 0.2s;
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid var(--accent); 
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transition: transform 0.2s, background 0.2s, border-color 0.2s;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 150px;
+    min-height: 160px;
 }
 
 .card:hover {
-    background: #333;
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
 .card h3 {
-    margin: 0 0 5px 0;
-    color: #ffd700;
+    margin: 0 0 8px 0;
+    color: var(--gold);
+    font-size: 1.25rem;
 }
 
-/* Specific Content Styling */
+/* --- Specific Content Styling --- */
 .category-tag {
     font-size: 0.7em;
     padding: 2px 8px;
-    border-radius: 10px;
+    border-radius: 4px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    background: rgba(157, 78, 221, 0.1);
+    color: var(--accent-hover);
+    border: 1px solid var(--accent);
+    align-self: flex-start;
 }
 
 .description-text {
-    color: #ddd;
+    color: var(--text-dim);
     font-size: 0.95rem;
     line-height: 1.6;
     margin-top: 10px;
@@ -150,36 +165,37 @@ button:hover {
 
 .source-tag {
     font-size: 0.75em;
-    color: #666;
+    color: #444; /* Keep subtle at bottom */
     font-style: italic;
     text-align: right;
     margin-top: 15px;
-    display: block;
 }
 
 .mastery-tag {
     align-self: flex-start;
-    background: #442222;
-    color: #ffaaaa;
-    padding: 4px 10px;
+    background: rgba(157, 78, 221, 0.2);
+    color: var(--accent-hover);
+    padding: 4px 12px;
     border-radius: 12px;
     font-size: 0.85em;
     font-weight: bold;
     margin-top: 15px;
-    border: 1px solid #663333;
+    border: 1px solid var(--accent);
 }
 
 /* --- Tooltip --- */
 #tooltip {
     position: absolute;
-    background: #111;
-    color: #fff;
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #ffd700;
+    background: var(--bg-card);
+    color: var(--text-main);
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid var(--gold);
     max-width: 300px;
     z-index: 2000;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.8);
     pointer-events: none;
     font-size: 0.9em;
 }
+
+.hidden { display: none; }
