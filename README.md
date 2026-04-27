@@ -1,56 +1,69 @@
-# NOT EVEN NEARLY DONE, DONT EXPECT IT TO HAPPEN THAT SOON AS IT IS A LOT!!!
-
-
-# ⚔️ DnD Workshop: EinHolzblock's Digital DM Screen
-
-[German](#german) | [English](#english)
+# ⚔️ DnD Workshop: Digital DM Screen
+> **Project Status:** 🚧 `UNTER ENTWICKLUNG / UNDER DEVELOPMENT` 🚧  
+> *Note: This is a massive undertaking. Features are being added as I go.*
 
 ---
 
-<a name="german"></a>
+<div align="center">
+  <img src="https://img.shields.io/badge/Theme-Dracula%20Midnight-9d4edd?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Ruleset-2024%20Core-d4af37?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Build-Vanilla%20JS-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+</div>
+
+---
+
+## 🌎 Navigation
+[🇩🇪 Deutsch](#-deutsch) | [🇺🇸 English](#-english) | [⚖️ Legal](#-legal--rechtliches)
+
+---
+
 ## 🇩🇪 Deutsch
 
-### Was ist das?
-Eine Sammlung von digitalen Werkzeugen für Dungeons & Dragons (basierend auf den 2024 Regeln). Das Projekt wurde von einem deutschen Schüler entwickelt, der keine Lust hat, ständig im Player's Handbook (PHB) zu blättern, nur um herauszufinden, was ein Zauber macht oder wie "Vergiftet" funktioniert.
+### 📜 Was ist das?
+Eine Sammlung von digitalen Werkzeugen für **Dungeons & Dragons (2024)**.  
+Dieses Projekt wurde entwickelt, um das ständige Blättern im *Player's Handbook (PHB)* zu beenden. Es bietet schnellen Zugriff auf alles, was man am Spieltisch braucht.
 
-### Features
-* **📜 Grimorium:** Eine filterbare Datenbank für alle Zaubersprüche.
-* **⚔️ Meisterschaften:** Schnelle Übersicht über Waffeneigenschaften (Weapon Masteries).
-* **🛡️ Arsenal:** Unterteilt in Basis-Ausrüstung und magische Gegenstände.
-* **✨ Zustände & Funktionen:** Alle Konditionen und Spielmechaniken auf einen Klick.
-* **⚡ Schnell-Suche:** Dynamische Suche in Echtzeit ohne Neuladen der Seite.
+### 🚀 Features
+* **📜 Grimorium:** Filterbare Datenbank für alle Zaubersprüche.
+* **⚔️ Meisterschaften:** Schnelle Übersicht über *Weapon Masteries*.
+* **🛡️ Arsenal:** Basis-Ausrüstung & magische Gegenstände.
+* **✨ Zustände:** Alle Konditionen und Spielmechaniken auf einen Klick.
+* **⚡ Schnell-Suche:** Dynamische Echtzeit-Filterung ohne Seiten-Refresh.
 
-### Technischer Stack
-Dieses Projekt ist bewusst "leicht" gehalten:
-* **HTML5 & CSS3:** Eigenes Design mit responsivem Grid.
-* **Vanilla JavaScript:** Schnelle Verarbeitung von JSON-Daten ohne schwere Frameworks.
-* **JSON:** Alle Daten sind in einfach editierbaren JSON-Dateien strukturiert.
+### 🛠️ Technischer Stack
+* **Frontend:** HTML5 & CSS3 (Custom Responsive Grid).
+* **Logic:** Vanilla JavaScript (Keine schweren Frameworks).
+* **Storage:** Strukturierte JSON-Dateien für einfache Wartung.
 
 ---
 
-<a name="english"></a>
 ## 🇺🇸 English
 
-### What is this?
-A collection of digital tools for Dungeons & Dragons (focused on the 2024 rules). This project was built by a German student who was tired of constantly flipping through the physical Player's Handbook (PHB) just to check a spell's effect or the specifics of a condition.
+### 📜 What is this?
+A collection of digital tools for **Dungeons & Dragons (2024 Rules)**.  
+Built by a student to replace the constant need for flipping through physical books. Designed for speed and clarity during live sessions.
 
-### Features
+### 🚀 Features
 * **📜 Grimorium:** A filterable database for all spells.
 * **⚔️ Masteries:** Quick reference for the new 2024 Weapon Masteries.
-* **🛡️ Arsenal:** Divided into Base Equipment and Magic Items.
-* **✨ Conditions & Functions:** All conditions and core game mechanics in one place.
-* **⚡ Quick Search:** Dynamic real-time search and filtering.
+* **🛡️ Arsenal:** Base Equipment and Magic Items.
+* **✨ Conditions:** All conditions and core mechanics in one place.
+* **⚡ Quick Search:** High-speed real-time filtering.
 
-### Technical Stack
-The project is intentionally lightweight:
-* **HTML5 & CSS3:** Custom-built responsive design.
-* **Vanilla JavaScript:** High-speed JSON processing without heavy frameworks.
-* **JSON:** All data is structured in easy-to-edit JSON files.
+### 🛠️ Technical Stack
+* **Frontend:** HTML5 & CSS3 (Custom Dracula/Midnight UI).
+* **Logic:** Vanilla JavaScript (Fast JSON processing).
+* **Data:** Structured JSON files for easy content updates.
 
 ---
 
 ## ⚖️ Legal / Rechtliches
 
-This website is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. © Wizards of the Coast LLC.
+**Disclaimer:** This website is unofficial Fan Content permitted under the [Wizards of the Coast Fan Content Policy](https://company.wizards.com/de/legal/fancontentpolicy). Not approved or endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. © Wizards of the Coast LLC.
 
-*Please see the `LICENSE` and `CONTACT.md` files for more information.*
+---
+
+<div align="center">
+  <p>Erstellt von <b>EinHolzblock</b></p>
+  <a href="CONTACT.md">Kontakt & Impressum</a>
+</div>
