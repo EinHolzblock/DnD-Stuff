@@ -3,59 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EinHolzblock - DnD Stuff</title>
+    <title>EinHolzblock - DnD Workshop</title>
     <style>
         body {
             background-color: #1a1a1a;
             color: #d4af37;
-            font-family: 'Segoe UI', serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             text-align: center;
+            padding: 20px;
         }
 
-        h1 { font-size: 3rem; margin-bottom: 10px; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
-        p { color: #aaa; margin-bottom: 40px; }
+        header { margin-bottom: 50px; }
+        h1 { font-size: 3.5rem; margin: 0; text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+        p.subtitle { color: #888; font-style: italic; font-size: 1.1rem; }
 
         .portal-container {
-            display: flex;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
         }
 
-        .portal-button {
-            padding: 20px 40px;
-            font-size: 1.2rem;
-            color: #d4af37;
+        .portal-card {
+            padding: 30px;
             text-decoration: none;
-            border: 2px solid #d4af37;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid #444;
+            border-radius: 12px;
+            background: #252525;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .portal-button:hover {
-            background: #d4af37;
-            color: black;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-            transform: translateY(-5px);
+        .portal-card h2 {
+            color: #d4af37;
+            margin: 15px 0 10px 0;
+            font-size: 1.5rem;
+        }
+
+        .portal-card p {
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .icon { font-size: 3rem; }
+
+        /* Hover Effects */
+        .portal-card:hover {
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .portal-card::after {
+            content: "Betreten →";
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 0.7rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .portal-card:hover::after { opacity: 1; }
+
+        footer {
+            margin-top: 60px;
+            font-size: 0.8rem;
+            color: #555;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            width: 100%;
+            max-width: 600px;
         }
     </style>
 </head>
 <body>
 
-    <h1>DnD Stuff</h1>
-    <p>Willkommen in der Werkstatt von EinHolzblock</p>
+    <header>
+        <h1>DnD Workshop</h1>
+        <p class="subtitle">Werkzeuge für Helden und Spielleiter von EinHolzblock</p>
+    </header>
 
     <div class="portal-container">
-        <a href="./Grimorium/" class="portal-button">📜 Zum Grimorium</a>
-        <a href="./Masteries/" class="portal-button">⚔️ Zu den Meistereigenschaften</a>
-        <a href="./Conditions/" class="portal-button">✨Konditionen & Funktionen</a>
-        
-        </div>
+        <a href="./Grimorium/" class="portal-card">
+            <span class="icon">📜</span>
+            <h2>Grimorium</h2>
+            <p>Durchsuche Zaubersprüche nach Klassen, Leveln und Schulen. Dein digitaler Spruchbeutel.</p>
+        </a>
+
+        <a href="./Masteries/" class="portal-card">
+            <span class="icon">⚔️</span>
+            <h2>Meisterschaften</h2>
+            <p>Waffenwerte und die neuen 2024 Meistereigenschaften. Optimiere jeden Schlag.</p>
+        </a>
+
+        <a href="./Conditions/" class="portal-card">
+            <span class="icon">✨</span>
+            <h2>Zustände & Regeln</h2>
+            <p>Konditionen, Kampfaktionen und allgemeine Spielfunktionen auf einen Blick.</p>
+        </a>
+    </div>
+
+    <footer>
+        Basierend auf dem System Reference Document & 2024 Core Rules. 
+        <br>Handgefertigt für die beste Gruppe der Welt.
+    </footer>
 
 </body>
 </html>
