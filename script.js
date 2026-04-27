@@ -46,11 +46,29 @@ function renderSpells(data) {
         const range = spell['range/area'] || 'N/A';
         const timeDisplay = spell.ritual ? `${spell.castingTime} (Ritual)` : (spell.castingTime || '1 Aktion');
         
-        let saveHtml = '';
-        if (spell.save) {
-            const success = spell.onSuccess === 'half' ? 'Halber Schaden' : (spell.onSuccess || 'Kein Effekt');
-            saveHtml = `<p class="save-info"><strong>RW:</strong> ${spell.save} <small>(${success})</small></p>`;
-        }
+        // --- Inside the renderSpells data.map loop ---
+
+let saveHtml = '';
+if (spell.save) {
+    let successText = '';
+    
+    // Check what is written in the JSON for 'onSuccess'
+    if (spell.onSuccess === 'half') {
+        successText = 'Halber Schaden';
+    } else if (!spell.onSuccess) {
+        successText = 'Kein Effekt';
+    } else {
+        // If it's anything else, use the text exactly as typed in JSON
+        successText = spell.onSuccess;
+    }
+
+    saveHtml = `
+        <p class="save-info">
+            <strong>RW:</strong> ${spell.save} 
+            <br><small>Bei erfolgreichem Wurf: ${successText}</small>
+        </p>
+    `;
+}
 
         return `
             <div class="spell-card">
