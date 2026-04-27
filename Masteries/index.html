@@ -12,33 +12,53 @@
   <div id="hamburger" onclick="toggleMenu()">☰</div>
   <div id="nav-menu" class="hidden">
     <a href="#" onclick="showPage('masteries')">⚔️ Meisterschaften</a>
+    <a href="../index.html">🏠 Zurück zum Hauptmenü</a>
   </div>
 </div>
 
 <header id="main-header">
-  <h1>⚔️ Meisterschaften</h1>
+  <h1>⚔️ Waffenmeisterschaften</h1>
 
   <div class="filter-group">
-    <input type="text" id="searchType" placeholder="Waffenart suchen...">
-    <input type="text" id="searchName" placeholder="Waffenname suchen...">
-    <input type="text" id="searchMastery" placeholder="Waffenmeistereigenschaft suchen...">
+    <div class="search-bar">
+      <input type="text" id="searchName" placeholder="Waffenname (z.B. Langschwert)..." onkeyup="filterWeapons()">
+      <input type="text" id="searchMastery" placeholder="Eigenschaft (z.B. Cleave)..." onkeyup="filterWeapons()">
+    </div>
 
-    <select id="filterType">
-      <option value="">Alle Waffenarten</option>
-      <option value="Melee">Nahkampf</option>
-      <option value="Ranged">Fernkampf</option>
-    </select>
+    <div class="select-filters">
+      <select id="filterType" onchange="filterWeapons()">
+        <option value="">Alle Waffenarten</option>
+        <option value="Melee">Nahkampf (Melee)</option>
+        <option value="Ranged">Fernkampf (Ranged)</option>
+      </select>
 
-    <select id="filterMastery">
-      <option value="">Alles Meistereigenschaften</option>
-    </select>
+      <select id="filterCategory" onchange="filterWeapons()">
+        <option value="">Alle Kategorien</option>
+        <option value="Simple">Einfach</option>
+        <option value="Martial">Kriegswaffen</option>
+      </select>
 
-    <button onclick="resetFilters()">Reset</button>
+      <select id="filterMastery" onchange="filterWeapons()">
+        <option value="">Alle Meistereigenschaften</option>
+        <option value="Cleave">Spalten (Cleave)</option>
+        <option value="Topple">Umwerfen (Topple)</option>
+        <option value="Nick">Einkerben (Nick)</option>
+        <option value="Graze">Streifen (Graze)</option>
+        <option value="Push">Stoßen (Push)</option>
+        <option value="Slow">Verlangsamen (Slow)</option>
+        <option value="Vex">Plagen (Vex)</option>
+        <option value="Sap">Schwächen (Sap)</option>
+      </select>
+    </div>
+
+    <button id="reset-btn" onclick="resetFilters()">Reset Filter</button>
   </div>
 </header>
 
 <main id="masteries-page">
-  <div id="weapon-list" class="spell-grid"></div>
+  <div id="weapon-list" class="spell-grid">
+    <p class="loading-text">Lade Waffenmeisterschaften...</p>
+  </div>
 </main>
 
 <div id="tooltip" class="hidden"></div>
