@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Longsword",
+    "type": "Melee",
+    "damage": "1d8",
+    "mastery": "Versatile strikes with balanced offense and defense."
+  },
+  {
+    "name": "Shortbow",
+    "type": "Ranged",
+    "damage": "1d6",
+    "mastery": "Quick shots allowing mobility and precision."
+  }
+]
