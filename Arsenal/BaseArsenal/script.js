@@ -2,15 +2,24 @@ let items = [];
 let masteryData = []; // Store descriptions here
 
 async function loadData() {
-    // Load both files
-    const [itemRes, masteryRes] = await Promise.all([
-        fetch('./data/items.json'),
-        fetch('../../Masteries/data/mastery-desc.json') // Path to your mastery descriptions
-    ]);
-    
-    items = await itemRes.json();
-    masteryData = await masteryRes.json();
-    render(items);
+    try {
+        console.log("Attempting to fetch data...");
+        const [itemRes, masteryRes] = await Promise.all([
+            fetch('./data/items.json'),
+            fetch('../../Masteries/data/mastery-desc.json')
+        ]);
+        
+        if (!itemRes.ok) throw new Error("Could not find items.json");
+        if (!masteryRes.ok) throw new Error("Could not find mastery-desc.json");
+
+        items = await itemRes.json();
+        masteryData = await masteryRes.json();
+        
+        console.log("Data loaded successfully:", { items, masteryData });
+        render(items);
+    } catch (err) {
+        console.error("Critical Load Error:", err);
+    }
 }
 
 function openMasteryModal(masteryName) {
@@ -85,5 +94,19 @@ function render(list) {
         container.appendChild(div);
     });
 }
+function applyFilters() {
+    const nameSearch = document.getElementById('searchName').value.toLowerCase();
+    const typeFilter = document.getElementById('filterType').value;
 
+    const filtered = items.filter(i => {
+        const matchesName = i.name.toLowerCase().includes(nameSearch);
+        const matchesType = typeFilter === "" || i.category === typeFilter || i.type === typeFilter;
+        return matchesName && matchesType;
+    });
+
+    render(filtered);
+}
+function toggleMenu() {
+    document.getElementById('nav-menu').classList.toggle('hidden');
+}
 document.addEventListener('DOMContentLoaded', loadData);
