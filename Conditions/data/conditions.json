@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Poisoned",
+    "translation": "Vergiftet",
+    "category": "Condition",
+    "effect": "Eine vergiftete Kreatur hat Nachteil auf Angriffswürfe und Fähigkeitsprüfungen."
+  },
+  {
+    "name": "Jumping",
+    "translation": "Springen",
+    "category": "Function",
+    "effect": "Du kannst einen Weitsprung oder Hochsprung machen. Die Distanz hängt von deinem Stärkewert ab."
+  },
+  {
+    "name": "Prone",
+    "translation": "Liegend",
+    "category": "Condition",
+    "effect": "Angriffe gegen dich haben Vorteil aus 5 Fuß Entfernung, sonst Nachteil. Du hast Nachteil auf eigene Angriffe."
+  }
+]
