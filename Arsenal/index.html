@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arsenal Hub</title>
+  <link rel="stylesheet" href="../style.css"> <style>
+    /* Specific centering for this hub */
+    body { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; }
+    .portal-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; padding: 20px; }
+    .portal-card { 
+        background: #2a2a2a; border: 2px solid #444; padding: 40px; border-radius: 12px; 
+        text-decoration: none; color: #d4af37; transition: 0.3s; width: 250px;
+    }
+    .portal-card:hover { border-color: #d4af37; transform: translateY(-5px); }
+    .icon { font-size: 4rem; display: block; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+  <header id="main-header">
+    <h1>🛡️ Das Arsenal</h1>
+    <p>Wähle eine Kategorie der Ausrüstung</p>
+  </header>
+
+  <div class="portal-container">
+    <a href="./BaseArsenal/index.html" class="portal-card">
+        <span class="icon">⚒️</span>
+        <h2>Base Arsenal</h2>
+        <p>Normale Gegenstände, Rüstungen und Werkzeuge.</p>
+    </a>
+
+    <a href="./MagicArsenal/index.html" class="portal-card">
+        <span class="icon">🪄</span>
+        <h2>Magic Arsenal</h2>
+        <p>Verzauberte Waffen, Artefakte und Tränke.</p>
+    </a>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <a href="../index.html" style="color: #aaa; text-decoration: none;">🏠 Zurück zum Hauptmenü</a>
+  </div>
+
+</body>
+</html>
