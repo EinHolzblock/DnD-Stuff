@@ -1,0 +1,134 @@
+body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 20px;
+    margin: 0;
+}
+
+header { text-align: center; margin-bottom: 30px; }
+
+/* Navigation & Menu */
+#nav-container { 
+    position: fixed; 
+    top: 20px; 
+    right: 20px; 
+    z-index: 1000; 
+}
+
+#hamburger { 
+    font-size: 30px; 
+    cursor: pointer; 
+    color: #d4af37; 
+    background: #2a2a2a; 
+    padding: 5px 12px; 
+    border: 1px solid #d4af37; 
+    border-radius: 5px; 
+}
+
+#nav-menu { 
+    position: absolute; 
+    right: 0; 
+    top: 55px; 
+    background: #2a2a2a; 
+    border: 1px solid #d4af37; 
+    width: 180px; 
+    border-radius: 5px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+#nav-menu a { 
+    display: block; 
+    padding: 12px; 
+    color: white; 
+    text-decoration: none; 
+    border-bottom: 1px solid #444; 
+}
+
+#nav-menu a:hover { background: #333; color: #d4af37; }
+
+/* Grid System */
+.spell-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+    gap: 20px; 
+    align-items: start; 
+}
+
+/* Karten Styling (Waffen/Meisterschaften) */
+.spell-card { 
+    background: #262626; 
+    border: 1px solid #444; 
+    border-top: 4px solid #d4af37; 
+    padding: 15px; 
+    border-radius: 4px; 
+}
+
+.spell-header { display: flex; justify-content: space-between; align-items: flex-start; }
+h3 { color: #d4af37; margin: 0; font-size: 1.2rem; }
+
+.level-badge { 
+    background: #d4af37; 
+    color: black; 
+    padding: 2px 8px; 
+    border-radius: 10px; 
+    font-size: 0.8rem; 
+    font-weight: bold; 
+}
+
+.spell-tags { display: flex; gap: 5px; margin: 5px 0; min-height: 20px; }
+.tag { font-size: 0.7rem; padding: 2px 6px; border-radius: 3px; color: white; font-weight: bold; }
+.ritual { background: #4a90e2; } /* Für taktische Tags */
+.concentration { background: #e67e22; } /* Für aggressive Tags */
+
+.meta { font-size: 0.85rem; color: #aaa; margin: 5px 0; line-height: 1.4; }
+.spell-stats { 
+    background: #121212; 
+    padding: 10px; 
+    border-radius: 4px; 
+    margin: 10px 0; 
+    border-left: 3px solid #d4af37; 
+    font-size: 0.9rem; 
+}
+
+.spell-desc { margin: 10px 0; background: #1a1a1a; padding: 5px; border-radius: 3px; }
+.desc-content { font-size: 0.85rem; color: #ccc; white-space: pre-line; padding: 10px; }
+
+/* Tooltip & Utility */
+#tooltip { 
+    position: fixed; 
+    pointer-events: none; 
+    background: #2a2a2a; 
+    border: 2px solid #d4af37; 
+    padding: 15px; 
+    border-radius: 8px; 
+    width: 300px; 
+    z-index: 2000; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8); 
+}
+
+.hidden { display: none !important; }
+
+/* Filter Styling */
+.filter-group { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 10px; 
+    margin-bottom: 20px; 
+}
+
+input, select, button { 
+    padding: 8px; 
+    border-radius: 4px; 
+    border: 1px solid #d4af37; 
+    background: #2a2a2a; 
+    color: white; 
+    outline: none;
+}
+
+button:hover {
+    background: #d4af37;
+    color: black;
+    cursor: pointer;
+}
