@@ -19,12 +19,18 @@
   <h1>⚔️ Meisterschaften</h1>
 
   <div class="filter-group">
-    <input type="text" id="searchName" placeholder="Name suchen...">
+    <input type="text" id="searchType" placeholder="Waffenart suchen...">
+    <input type="text" id="searchName" placeholder="Waffenname suchen...">
+    <input type="text" id="searchMastery" placeholder="Waffenmeistereigenschaft suchen...">
 
     <select id="filterType">
-      <option value="">Alle Typen</option>
+      <option value="">Alle Waffenarten</option>
       <option value="Melee">Nahkampf</option>
       <option value="Ranged">Fernkampf</option>
+    </select>
+
+    <select id="filterMastery">
+      <option value="">Alles Meistereigenschaften</option>
     </select>
 
     <button onclick="resetFilters()">Reset</button>
