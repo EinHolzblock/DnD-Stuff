@@ -117,6 +117,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-height: 150px;
 }
 
 .card:hover {
@@ -125,23 +126,18 @@ button:hover {
 }
 
 .card h3 {
-    margin: 0 0 10px 0;
+    margin: 0 0 5px 0;
     color: #ffd700;
 }
 
-/* Specific Weapon & Description Styling */
+/* Specific Content Styling */
 .category-tag {
-    font-size: 0.75em;
-    background: #444;
-    padding: 2px 6px;
-    border-radius: 3px;
+    font-size: 0.7em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: bold;
     text-transform: uppercase;
-    color: #ccc;
-}
-
-.card p {
-    margin: 5px 0;
-    font-size: 0.95em;
+    letter-spacing: 0.5px;
 }
 
 .description-text {
@@ -149,8 +145,17 @@ button:hover {
     font-size: 0.95rem;
     line-height: 1.6;
     margin-top: 10px;
+    flex-grow: 1;
 }
 
+.source-tag {
+    font-size: 0.75em;
+    color: #666;
+    font-style: italic;
+    text-align: right;
+    margin-top: 15px;
+    display: block;
+}
 
 .mastery-tag {
     align-self: flex-start;
