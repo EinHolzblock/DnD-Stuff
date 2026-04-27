@@ -1,54 +1,67 @@
 /* --- Global & Layout --- */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #1e1e1e;
     color: #eee;
-}
-
-.card {
-    min-height: 100px; /* Instead of a fixed height */
-    height: auto;
+    line-height: 1.5;
 }
 
 #nav-container {
-    padding: 10px;
+    padding: 10px 20px;
     background: #333;
     display: flex;
     align-items: center;
     gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 #hamburger {
     cursor: pointer;
-    font-size: 20px;
+    font-size: 24px;
+    user-select: none;
 }
 
 .hidden {
     display: none;
 }
 
+#nav-menu {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    background: #333;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    border: 1px solid #444;
+}
+
 #nav-menu a {
     display: block;
     color: white;
-    padding: 5px 0;
+    padding: 8px 15px;
     text-decoration: none;
-    transition: color 0.2s;
+    transition: background 0.2s;
 }
 
 #nav-menu a:hover {
+    background: #444;
     color: #00aaff;
 }
 
 /* --- Header & Filters --- */
 #main-header {
-    padding: 15px;
+    padding: 20px;
     background: #222;
     border-bottom: 1px solid #444;
 }
 
 #main-header h1 {
-    margin-top: 0;
+    margin: 0 0 15px 0;
+    font-size: 1.8rem;
 }
 
 .filter-group {
@@ -58,18 +71,29 @@ body {
     align-items: center;
 }
 
+.search-bar, .select-filters {
+    display: flex;
+    gap: 10px;
+}
+
 input, select, button {
-    padding: 8px;
+    padding: 10px;
     border-radius: 4px;
     border: 1px solid #555;
     background: #333;
     color: white;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: #00aaff;
 }
 
 button {
     cursor: pointer;
     background: #444;
     font-weight: bold;
+    border: 1px solid #666;
 }
 
 button:hover {
@@ -79,57 +103,70 @@ button:hover {
 /* --- Grid & Cards --- */
 .spell-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-    padding: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
 .card {
     background: #2a2a2a;
     padding: 15px;
     border-radius: 6px;
-    border-left: 4px solid #555; /* Neutral weapon color */
+    border-left: 4px solid #555; 
     transition: transform 0.2s, background 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card:hover {
     background: #333;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 }
 
 .card h3 {
-    margin: 0 0 8px 0;
-    color: #ffd700; /* Gold for weapon names */
+    margin: 0 0 10px 0;
+    color: #ffd700;
 }
 
-/* Specific Weapon Data Styling */
-.card .weapon-meta {
-    font-size: 0.9em;
-    color: #bbb;
-    margin-bottom: 10px;
-    font-style: italic;
+/* Specific Weapon & Description Styling */
+.category-tag {
+    font-size: 0.75em;
+    background: #444;
+    padding: 2px 6px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    color: #ccc;
 }
 
-.card .mastery-tag {
-    display: inline-block;
+.card p {
+    margin: 5px 0;
+    font-size: 0.95em;
+}
+
+.mastery-tag {
+    align-self: flex-start;
     background: #442222;
     color: #ffaaaa;
-    padding: 2px 8px;
+    padding: 4px 10px;
     border-radius: 12px;
     font-size: 0.85em;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 15px;
+    border: 1px solid #663333;
 }
 
 /* --- Tooltip --- */
 #tooltip {
     position: absolute;
     background: #111;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #555;
-    max-width: 250px;
-    z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    pointer-events: none; /* Prevents flickering when moving mouse */
+    color: #fff;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ffd700;
+    max-width: 300px;
+    z-index: 2000;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+    pointer-events: none;
+    font-size: 0.9em;
 }
