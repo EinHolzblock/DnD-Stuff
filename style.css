@@ -16,9 +16,9 @@ body {
     background: var(--bg-dark);
     color: var(--text-main);
     line-height: 1.5;
+    /* Removed align-items: center to prevent grid squishing */
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 /* --- Navigation & Menu --- */
@@ -33,6 +33,7 @@ body {
     z-index: 100;
     border-bottom: 1px solid var(--border);
     width: 100%;
+    box-sizing: border-box; /* Crucial for full-width nav */
 }
 
 #hamburger {
@@ -59,14 +60,13 @@ body {
     text-decoration: none;
 }
 
-#nav-menu a:hover {
-    color: var(--accent);
-}
+#nav-menu a:hover { color: var(--accent); }
 
 /* --- Header --- */
 header {
-    padding: 60px 20px;
+    padding: 40px 20px;
     text-align: center;
+    width: 100%;
 }
 
 header h1 {
@@ -76,183 +76,98 @@ header h1 {
 }
 
 .accent { color: var(--accent); }
+.subtitle { color: var(--text-dim); font-style: italic; margin-top: 10px; }
 
-.subtitle {
-    color: var(--text-dim);
-    font-style: italic;
-    margin-top: 10px;
-}
-
-/* --- Portal Container --- */
-.portal-container {
+/* --- Portal & Item Grid --- */
+/* This handles both the Main Menu and the Arsenal Grid */
+.portal-container, .spell-grid, #item-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 25px;
-    width: 90%;
-    max-width: 1100px;
-    margin-bottom: 60px;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto 60px auto; /* Centers the grid itself */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.portal-card {
-    padding: 40px 20px;
-    text-decoration: none;
-    border: 1px solid var(--border);
-    border-radius: 15px;
+/* --- Card Styling --- */
+.portal-card, .card {
     background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 25px;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    text-decoration: none;
+    color: var(--text-main);
+    position: relative;
 }
 
-.portal-card .icon { font-size: 3.5rem; margin-bottom: 15px; transition: transform 0.3s ease; }
-
-.portal-card h2 { 
-    color: var(--gold); 
-    margin: 10px 0; 
-    font-size: 1.6rem; 
+/* The "Glow" for Arsenal Cards */
+.card {
+    border-left: 5px solid var(--accent);
+    text-align: left;
+    min-height: 180px;
 }
 
-.portal-card p { 
-    color: var(--text-dim); 
-    font-size: 0.95rem; 
-    text-align: center; 
-}
+.portal-card { align-items: center; } /* Center icons on main menu only */
 
-.portal-card:hover {
+.card:hover, .portal-card:hover {
     border-color: var(--accent);
-    transform: translateY(-10px);
+    transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(157, 78, 221, 0.2);
 }
 
-.portal-card:hover .icon {
-    transform: scale(1.1);
+.card h3, .portal-card h2 {
+    color: var(--gold);
+    margin: 0 0 10px 0;
+}
+
+.card p { margin: 5px 0; font-size: 0.95rem; }
+
+/* --- Tags & Details --- */
+.mastery-tag {
+    align-self: flex-start;
+    background: rgba(157, 78, 221, 0.15);
+    color: var(--accent-hover);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 15px;
+    border: 1px solid var(--accent);
+}
+
+.source-tag {
+    font-size: 0.7rem;
+    color: #555;
+    font-style: italic;
+    margin-top: auto; /* Pushes source to the bottom */
+    text-align: right;
+}
+
+.description-text {
+    font-style: italic;
+    color: var(--text-dim);
+    margin-top: 10px;
+    font-size: 0.9rem;
 }
 
 /* --- Footer --- */
 footer {
     margin-top: auto;
     padding: 40px 20px;
-    max-width: 800px;
+    width: 100%;
     text-align: center;
     border-top: 1px solid var(--border);
     font-size: 0.8rem;
     color: #555;
-}
-
-footer a {
-    color: var(--text-dim);
-    text-decoration: none;
-}
-
-footer a:hover { color: var(--accent); }
-/* Ensure the grid actually spreads out */
-.spell-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    width: 100%;
     box-sizing: border-box;
 }
 
-/* Fix the card appearance */
-.card {
-    background: #1a1625; /* var(--bg-card) */
-    border: 1px solid #2d283e; /* var(--border) */
-    border-left: 5px solid #9d4edd; /* var(--accent) - The Purple Glow */
-    padding: 20px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    text-align: left; /* Fixes the centering issue in your screenshot */
-}
+footer a { color: var(--text-dim); text-decoration: none; }
+footer a:hover { color: var(--accent); }
 
-.card h3 {
-    margin-top: 0;
-    color: #d4af37; /* var(--gold) */
-}
-
-.mastery-tag {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 5px 10px;
-    background: rgba(157, 78, 221, 0.1);
-    border: 1px solid #9d4edd;
-    color: #c77dff;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    font-weight: bold;
-}
-
-/* --- Arsenal Grid Layout --- */
-#item-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
-    padding: 30px;
-    width: 95%;
-    max-width: 1400px;
-    margin: 0 auto;
-    text-align: left; /* Ensures card text isn't centered by the header */
-}
-
-/* --- Card Styling --- */
-.card {
-    background: var(--bg-card, #1a1625);
-    border: 1px solid var(--border, #2d283e);
-    border-left: 5px solid var(--accent, #9d4edd); /* That classic purple border */
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-    min-height: 200px;
-    position: relative;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent, #9d4edd);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-}
-
-.card h3 {
-    margin: 0 0 10px 0;
-    color: var(--gold, #d4af37);
-}
-
-.card p {
-    margin: 5px 0;
-    font-size: 0.9rem;
-}
-
-/* --- Mastery & Source Tags --- */
-.mastery-tag {
-    align-self: flex-start;
-    background: rgba(157, 78, 221, 0.15);
-    color: #c77dff; /* var(--accent-hover) */
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-top: 15px;
-    border: 1px solid var(--accent, #9d4edd);
-}
-
-.source-tag {
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    font-size: 0.7rem;
-    color: #555;
-    font-style: italic;
-}
-
-.description-text {
-    font-style: italic;
-    color: var(--text-dim, #a0a0a0);
-    margin-top: 10px !important;
-}
-/* Utility */
 .hidden { display: none; }
