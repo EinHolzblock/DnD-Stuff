@@ -88,8 +88,21 @@ const tooltip = document.getElementById('tooltip');
 function showTooltip(e, spellName) {
     const spell = spells.find(s => s.name === spellName);
     if (!spell) return;
-    tooltip.innerHTML = `<strong>${spell.name}</strong><br><small>Lvl ${spell.level} ${spell.school}</small><br><small>Duration: ${spell.duration || 'Unmittelbar'}, Range: ${range}</small><br><small>Zeit: ${spell.castingTime} <p style="font-size:0.8rem; margin-top:5px;">${spell.desc ? spell.desc.substring(0, 200) + '...' : ''}</p>`;
+    
+    // Fixed: range variable wasn't defined here, so we get it from the spell object
+    const range = spell['range/area'] || 'N/A';
+    
+    tooltip.innerHTML = `
+        <strong>${spell.name}</strong><br>
+        <small>Lvl ${spell.level} ${spell.school}</small><br>
+        <small>Duration: ${spell.duration || 'Unmittelbar'}, Range: ${range}</small><br>
+        <small>Zeit: ${spell.castingTime || 'N/A'}</small>
+        <p style="font-size:0.8rem; margin-top:5px; border-top: 1px solid #444; padding-top: 5px;">
+            ${spell.desc ? spell.desc.substring(0, 200) + '...' : 'Keine Beschreibung'}
+        </p>`;
+    
     tooltip.classList.remove('hidden');
+    moveTooltip(e); // Added to ensure it positions immediately
 }
 
 function moveTooltip(e) {
@@ -97,7 +110,9 @@ function moveTooltip(e) {
     tooltip.style.top = (e.clientY + 15) + 'px';
 }
 
-function hideTooltip() { tooltip.classList.add('hidden'); }
+function hideTooltip() { 
+    tooltip.classList.add('hidden'); 
+}
 
 function addToSpellbook(name) {
     if (!mySpellbook.includes(name)) {
@@ -122,7 +137,7 @@ function saveAndRenderSpellbook() {
         return `
             <div class="spellbook-item" onmousemove="moveTooltip(event)" onmouseenter="showTooltip(event, '${name}')" onmouseleave="hideTooltip()">
                 <span><span class="spell-grade">[Lvl ${grade}]</span> <strong>${name}</strong></span>
-                <span onclick="removeFromSpellbook('${name}')" style="color:red; cursor:pointer;">×</span>
+                <span onclick="removeFromSpellbook('${name}')" style="color:red; cursor:pointer; font-weight:bold; padding: 0 5px;">×</span>
             </div>
         `;
     }).join('');
@@ -145,15 +160,25 @@ function filterData() {
 }
 
 function resetFilters() {
-    document.querySelectorAll('input, select').forEach(i => i.value = "");
+    document.getElementById('searchName').value = "";
+    document.getElementById('searchDuration').value = "";
+    document.getElementById('filterLevel').value = "";
+    document.getElementById('filterClass').value = "";
     renderSpells(spells);
 }
 
 // Startup
 document.addEventListener('DOMContentLoaded', () => {
     loadSpells();
-    document.getElementById('searchName').addEventListener('input', filterData);
-    document.getElementById('searchDuration').addEventListener('input', filterData);
-    document.getElementById('filterLevel').addEventListener('change', filterData);
-    document.getElementById('filterClass').addEventListener('change', filterData);
+    
+    // Event Listeners for Filters
+    const searchName = document.getElementById('searchName');
+    const searchDur = document.getElementById('searchDuration');
+    const filtLvl = document.getElementById('filterLevel');
+    const filtCls = document.getElementById('filterClass');
+
+    if(searchName) searchName.addEventListener('input', filterData);
+    if(searchDur) searchDur.addEventListener('input', filterData);
+    if(filtLvl) filtLvl.addEventListener('change', filterData);
+    if(filtCls) filtCls.addEventListener('change', filterData);
 });
