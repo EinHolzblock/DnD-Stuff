@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meistereigenschaften Details</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="nav-container">
+  <div id="hamburger" onclick="toggleMenu()">☰</div>
+  <div id="nav-menu" class="hidden">
+    <a href="index.html">⚔️ Zurück zu Waffen</a>
+    <a href="../index.html">🏠 Hauptmenü</a>
+  </div>
+</div>
+
+<header id="main-header">
+  <h1>✨ Meistereigenschaften</h1>
+  <p>Details zu den speziellen Kampfmanövern der Waffen.</p>
+</header>
+
+<main>
+  <div id="mastery-info-grid" class="spell-grid">
+    <div class="card">
+        <h3>Cleave (Spalten)</h3>
+        <p>Wenn du eine Kreatur mit einem Nahkampf-Angriff triffst, kannst du versuchen, eine zweite Kreatur innerhalb von 5 Fuß zu treffen.</p>
+    </div>
+    <div class="card">
+        <h3>Topple (Umwerfen)</h3>
+        <p>Wenn du eine Kreatur triffst, muss diese einen Konstitutions-Rettungswurf bestehen oder sie fällt liegend (Prone).</p>
+    </div>
+    </div>
+</main>
+
+<script>
+  function toggleMenu() {
+      document.getElementById('nav-menu').classList.toggle('hidden');
+  }
+</script>
+</body>
+</html>
