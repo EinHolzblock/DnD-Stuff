@@ -6,7 +6,7 @@ async function loadRules() {
         rules = await res.json();
         renderRules(rules);
     } catch (err) {
-        console.error("Error loading rules:", err);
+        console.error("Fehler beim Laden:", err);
     }
 }
 
@@ -18,16 +18,24 @@ function renderRules(list) {
         const div = document.createElement('div');
         div.className = 'card';
         
-        // Color border based on category
+        // Dynamic colors based on Category
         const borderColor = r.category === "Condition" ? "#e74c3c" : "#3498db";
         div.style.borderLeft = `4px solid ${borderColor}`;
 
         div.innerHTML = `
-            <div class="card-header">
-                <h3>${r.name} <span style="font-size: 0.8em; color: #888;">(${r.translation})</span></h3>
-                <span class="category-tag">${r.category}</span>
+            <div class="card-header" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <h3 style="margin: 0;">${r.name}</h3>
+                    <small style="color: #888;">${r.translation}</small>
+                </div>
+                <span class="category-tag" style="background: ${borderColor}44; color: ${borderColor}; border: 1px solid ${borderColor};">
+                    ${r.category}
+                </span>
             </div>
-            <p class="description-text">${r.effect}</p>
+            <p class="description-text" style="margin-top: 15px;">${r.effect}</p>
+            <div style="margin-top: auto; padding-top: 10px; text-align: right;">
+                <span style="font-size: 0.75em; color: #555; font-style: italic;">Quelle: ${r.source || 'Unbekannt'}</span>
+            </div>
         `;
         container.appendChild(div);
     });
@@ -38,8 +46,12 @@ function applyFilters() {
     const category = document.getElementById('filterCategory').value;
 
     const filtered = rules.filter(r => {
-        return (!name || r.name.toLowerCase().includes(name) || r.translation.toLowerCase().includes(name)) &&
-               (!category || r.category === category);
+        const matchesName = !name || 
+            r.name.toLowerCase().includes(name) || 
+            r.translation.toLowerCase().includes(name);
+        const matchesCategory = !category || r.category === category;
+        
+        return matchesName && matchesCategory;
     });
     renderRules(filtered);
 }
