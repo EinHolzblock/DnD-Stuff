@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Magic Arsenal</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<div id="nav-container">
+  <div id="hamburger" onclick="toggleMenu()">☰</div>
+  <div id="nav-menu" class="hidden">
+    <a href="../index.html">🛡️ Zurück zum Arsenal</a>
+    <a href="../../index.html">🏠 Hauptmenü</a>
+  </div>
+</div>
+<header id="main-header">
+  <h1>🪄 Magic Arsenal</h1>
+  <div class="filter-group">
+    <input type="text" id="searchName" placeholder="Magie-Item suchen..." onkeyup="applyFilters()">
+    <select id="filterRarity" onchange="applyFilters()">
+      <option value="">Alle Seltenheiten</option>
+      <option value="Common">Common</option>
+      <option value="Uncommon">Uncommon</option>
+      <option value="Rare">Rare</option>
+      <option value="Very Rare">Very Rare</option>
+      <option value="Legendary">Legendary</option>
+    </select>
+  </div>
+</header>
+<main><div id="item-grid" class="spell-grid"></div></main>
+<script src="script.js"></script>
+</body>
+</html>
