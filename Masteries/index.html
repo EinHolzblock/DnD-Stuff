@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masteries</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="nav-container">
+  <div id="hamburger" onclick="toggleMenu()">☰</div>
+  <div id="nav-menu" class="hidden">
+    <a href="#" onclick="showPage('masteries')">⚔️ Masteries</a>
+  </div>
+</div>
+
+<header id="main-header">
+  <h1>⚔️ Weapon Masteries</h1>
+  <div class="filter-group">
+    <input type="text" id="searchName" placeholder="Name suchen...">
+    <select id="filterType">
+      <option value="">Alle Typen</option>
+      <option value="Melee">Melee</option>
+      <option value="Ranged">Ranged</option>
+    </select>
+    <button onclick="resetFilters()">Reset</button>
+  </div>
+</header>
+
+<main id="masteries-page">
+  <div id="weapon-list" class="grid"></div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
