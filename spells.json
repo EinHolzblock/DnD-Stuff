@@ -137,6 +137,7 @@
         "level": 2,
         "materials": "Goldstaub im Wert von mind. 25GM, den der Zauber verbraucht",
         "range/area": "Berührung",
+        "desc": "Du berührst eine Kreatur und wählst Charisma, Geschicklichkeit, Intelligenz, Stärke oder Weisheit aus. Für die Wirkungsdauer ist das Ziel bei Attributswürfen mit dem ausgewählten Attribut im Vorteil.",
         "ritual": false,
         "school": "Bannmagie",
         "source": "PHB (2024)"
