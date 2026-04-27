@@ -17,9 +17,8 @@ function render(list) {
 
     list.forEach(i => {
         const div = document.createElement('div');
-        div.className = 'card';
+        div.className = 'card'; // This is the most important class!
         
-        // Logic for Damage/AC/Description
         let details = "";
         if (i.category === "Weapon") {
             details = `<p><b>Schaden:</b> ${i.damage || '-'}</p>`;
@@ -29,11 +28,8 @@ function render(list) {
             details = i.description ? `<p class="description-text">${i.description}</p>` : "";
         }
 
-        // Mastery Tag (Text only, no link/button)
         const masteryTag = i.mastery 
-            ? `<div class="mastery-tag" style="border: 1px solid #444; padding: 4px; display: inline-block; margin-top: 10px;">
-                 ✨ Mastery: ${i.mastery}
-               </div>` 
+            ? `<div class="mastery-tag">✨ Mastery: ${i.mastery}</div>` 
             : '';
 
         div.innerHTML = `
@@ -41,15 +37,11 @@ function render(list) {
                 <h3>${i.name}</h3>
                 <p><b>Typ:</b> ${i.type}</p>
                 <p><b>Preis:</b> ${i.cost || '-'} | <b>Gewicht:</b> ${i.weight || '-'}</p>
-                
                 ${details}
-                
                 <p class="description-text">${i.properties || ''}</p>
             </div>
-            
             ${masteryTag}
-            
-            <span class="source-tag">${i.source}</span>
+            <span class="source-tag">${i.source || 'PHB 2024'}</span>
         `;
         container.appendChild(div);
     });
