@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grimorium</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="nav-container">
+        <div id="hamburger" onclick="toggleMenu()">☰</div>
+        <div id="nav-menu" class="hidden">
+            <a href="#" onclick="showPage('grimorium')">📜 Grimorium</a>
+            <a href="#" onclick="showPage('spellsheet')">📓 Spell Sheet</a>
+        </div>
+    </div>
+
+    <header id="main-header">
+        <h1>📜 Grimorium</h1>
+        <div class="filter-group">
+            <input type="text" id="searchName" placeholder="Name suchen...">
+            <input type="text" id="searchDuration" placeholder="Dauer...">
+            <select id="filterLevel">
+                <option value="">Alle Level</option>
+                <option value="0">Cantrip</option>
+                <option value="1">Lvl 1</option>
+                <option value="2">Lvl 2</option>
+                <option value="3">Lvl 3</option>
+                <option value="4">Lvl 4</option>
+                <option value="5">Lvl 5</option>
+                <option value="6">Lvl 6</option>
+                <option value="7">Lvl 7</option>
+                <option value="8">Lvl 8</option>
+                <option value="9">Lvl 9</option>
+            </select>
+            <select id="filterClass">
+                <option value="">Alle Klassen</option>
+                <option value="Magier">Magier</option>
+                <option value="Hexenmeister">Hexenmeister</option>
+                <option value="Kleriker">Kleriker</option>
+                <option value="Barde">Barde</option>
+                <option value="Waldläufer">Waldläufer</option>
+                <option value="Druide">Druide</option>
+                <option value="Zauberer">Zauberer</option>
+                <option value="Paladin">Paladin</option>
+            </select>
+            <button onclick="resetFilters()">Reset</button>
+        </div>
+    </header>
+
+    <main id="grimorium-page">
+        <div id="spell-list" class="spell-grid"></div>
+    </main>
+
+    <main id="spellsheet-page" class="hidden">
+        <div class="sheet-container">
+            <h2>📓 Mein Spell Sheet</h2>
+            <div id="spellbook-list"></div>
+        </div>
+    </main>
+
+    <div id="tooltip" class="hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
