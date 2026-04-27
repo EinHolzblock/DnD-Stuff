@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D 5.5e Meisterschafts-Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="nav-container">
+        <div id="hamburger" onclick="toggleMenu()">☰</div>
+        <div id="nav-menu" class="hidden">
+            <a href="#">Waffen-Liste</a>
+            <a href="#">Kombos & Strategien</a>
+            <a href="#">Bastion-Regeln</a>
+        </div>
+    </div>
+
+    <header>
+        <h1>Waffenmeistereien 5.5e</h1>
+        <p>Taktische Übersicht für Kämpfer und Abenteurer</p>
+    </header>
+
+    <div class="filter-group">
+        <input type="text" id="search" placeholder="Waffe suchen...">
+        <select id="mastery-filter">
+            <option value="">Alle Meisterschaften</option>
+            <option value="cleave">Spalten (Cleave)</option>
+            <option value="nick">Schnitt (Nick)</option>
+            <option value="topple">Umwerfen (Topple)</option>
+            <option value="vex">Bedrängen (Vex)</option>
+            <option value="slow">Verlangsamen (Slow)</option>
+        </select>
+        <button onclick="filterWeapons()">Filtern</button>
+    </div>
+
+    <main class="spell-grid" id="weapon-container">
+        <div class="spell-card">
+            <div class="spell-header">
+                <h3>Schlachtbeil (Battleaxe)</h3>
+                <span class="level-badge">Vielseitig</span>
+            </div>
+            <div class="spell-tags">
+                <span class="tag concentration">Topple (Umwerfen)</span>
+            </div>
+            <div class="meta">
+                Schaden: 1d8/1d10 Hiebwaffen<br>
+                Eigenschaften: Vielseitig
+            </div>
+            <div class="spell-stats">
+                <strong>Effekt:</strong> Wenn du eine Kreatur triffst, muss sie einen Konstitutionsrettungswurf bestehen oder fällt <strong>Liegend (Prone)</strong>.
+            </div>
+            <div class="spell-desc">
+                <div class="desc-content">
+                    Perfekt in Kombination mit einer zweiten Attacke, um mit Vorteil anzugreifen.
+                </div>
+            </div>
+        </div>
+
+        <div class="spell-card">
+            <div class="spell-header">
+                <h3>Dolch (Dagger)</h3>
+                <span class="level-badge">Leicht</span>
+            </div>
+            <div class="spell-tags">
+                <span class="tag ritual">Nick (Schnitt)</span>
+            </div>
+            <div class="meta">
+                Schaden: 1d4 Stichwaffen<br>
+                Eigenschaften: Finesse, Leicht, Wurfeigenschaft
+            </div>
+            <div class="spell-stats">
+                <strong>Effekt:</strong> Ermöglicht den zusätzlichen Angriff der "Licht"-Eigenschaft als Teil der <strong>Angriffsaktion</strong> statt als Bonusaktion.
+            </div>
+        </div>
+    </main>
+
+    <div id="tooltip" class="hidden"></div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
