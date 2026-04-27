@@ -146,6 +146,44 @@ footer a {
 }
 
 footer a:hover { color: var(--accent); }
+/* Ensure the grid actually spreads out */
+.spell-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Fix the card appearance */
+.card {
+    background: #1a1625; /* var(--bg-card) */
+    border: 1px solid #2d283e; /* var(--border) */
+    border-left: 5px solid #9d4edd; /* var(--accent) - The Purple Glow */
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Fixes the centering issue in your screenshot */
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #d4af37; /* var(--gold) */
+}
+
+.mastery-tag {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 5px 10px;
+    background: rgba(157, 78, 221, 0.1);
+    border: 1px solid #9d4edd;
+    color: #c77dff;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
 
 /* Utility */
 .hidden { display: none; }
