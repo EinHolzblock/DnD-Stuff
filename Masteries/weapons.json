@@ -1,11 +1,11 @@
 [
-    {
-        "name": "Dolch (Dagger)",
-        "typ": "Leicht",
-        "schaden": "1d4 Stich",
-        "eigenschaften": "Finesse, Leicht, Wurfeigenschaft",
-        "meistereigenschaft": "Nick",
-        "meisterEffekt": "Zusatzangriff der 'Light'-Eigenschaft erfolgt als Teil der Angriffsaktion.",
-        "beschreibung": "Maximiert die Anzahl der Angriffe pro Runde."
-    }
+  {
+    "name": "Dolch (Dagger)",
+    "mastery": "Nick",
+    "damage": "1d4",
+    "damageType": "Stich",
+    "properties": ["Finesse", "Leicht", "Wurfeigenschaft"],
+    "masteryEffect": "Zusatzangriff als Teil der Angriffsaktion.",
+    "desc": "Mit der Nick-Meisterschaft kannst du deinen Bonus-Angriff in deine Hauptaktion integrieren, was deine Bonusaktion für andere Dinge freihält."
+  }
 ]
