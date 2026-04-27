@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Dolch (Dagger)",
+        "typ": "Leicht",
+        "schaden": "1d4 Stich",
+        "eigenschaften": "Finesse, Leicht, Wurfeigenschaft",
+        "meistereigenschaft": "Nick",
+        "meisterEffekt": "Zusatzangriff der 'Light'-Eigenschaft erfolgt als Teil der Angriffsaktion.",
+        "beschreibung": "Maximiert die Anzahl der Angriffe pro Runde."
+    }
+]
