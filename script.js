@@ -88,7 +88,7 @@ const tooltip = document.getElementById('tooltip');
 function showTooltip(e, spellName) {
     const spell = spells.find(s => s.name === spellName);
     if (!spell) return;
-    tooltip.innerHTML = `<strong>${spell.name}</strong><br><small>Lvl ${spell.level} ${spell.school}</small><p style="font-size:0.8rem; margin-top:5px;">${spell.desc ? spell.desc.substring(0, 200) + '...' : ''}</p>`;
+    tooltip.innerHTML = `<strong>${spell.name}</strong><br><small>Lvl ${spell.level} ${spell.school}</small><br><small>Duration: ${spell.duration || 'Unmittelbar'}, Range: ${range}</small><br><small>Zeit: ${spell.castingTime} <p style="font-size:0.8rem; margin-top:5px;">${spell.desc ? spell.desc.substring(0, 200) + '...' : ''}</p>`;
     tooltip.classList.remove('hidden');
 }
 
