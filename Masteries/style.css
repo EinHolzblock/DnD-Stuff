@@ -6,6 +6,11 @@ body {
     color: #eee;
 }
 
+.card {
+    min-height: 100px; /* Instead of a fixed height */
+    height: auto;
+}
+
 #nav-container {
     padding: 10px;
     background: #333;
