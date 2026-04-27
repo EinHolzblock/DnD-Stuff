@@ -26,6 +26,14 @@
   </div>
 </header>
 <main><div id="item-grid" class="spell-grid"></div></main>
+  <div id="mastery-modal" class="modal-overlay hidden" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <div id="modal-body">
+      </div>
+  </div>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
