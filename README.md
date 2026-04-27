@@ -2,6 +2,7 @@
 `Version: 0.1.0-alpha` | `Author: EinHolzblock`
 
 > **PROJEKT-STATUS:** 🚧 Das Projekt befindet sich in einer frühen Entwicklungsphase. Viele Funktionen sind noch Platzhalter oder werden aktiv überarbeitet. Da dies von einem deutschen Schüler gemacht wird, kann das vollenden etwas dauern.
+
 > **PROJECT-STATUS:** 🚧 The Project is still in an early development.  A lot of functions are either empty, placeholders or are actively being made. As this is made by a german student, it will probably take a long time until it is done.
 
 ---
