@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Masteries</title>
+  <title>Meisterschaften</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,26 +11,31 @@
 <div id="nav-container">
   <div id="hamburger" onclick="toggleMenu()">☰</div>
   <div id="nav-menu" class="hidden">
-    <a href="#" onclick="showPage('masteries')">⚔️ Masteries</a>
+    <a href="#" onclick="showPage('masteries')">⚔️ Meisterschaften</a>
   </div>
 </div>
 
 <header id="main-header">
-  <h1>⚔️ Weapon Masteries</h1>
+  <h1>⚔️ Meisterschaften</h1>
+
   <div class="filter-group">
     <input type="text" id="searchName" placeholder="Name suchen...">
+
     <select id="filterType">
       <option value="">Alle Typen</option>
-      <option value="Melee">Melee</option>
-      <option value="Ranged">Ranged</option>
+      <option value="Melee">Nahkampf</option>
+      <option value="Ranged">Fernkampf</option>
     </select>
+
     <button onclick="resetFilters()">Reset</button>
   </div>
 </header>
 
 <main id="masteries-page">
-  <div id="weapon-list" class="grid"></div>
+  <div id="weapon-list" class="spell-grid"></div>
 </main>
+
+<div id="tooltip" class="hidden"></div>
 
 <script src="script.js"></script>
 </body>
