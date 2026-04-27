@@ -185,5 +185,74 @@ footer a:hover { color: var(--accent); }
     font-weight: bold;
 }
 
+/* --- Arsenal Grid Layout --- */
+#item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 30px;
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: left; /* Ensures card text isn't centered by the header */
+}
+
+/* --- Card Styling --- */
+.card {
+    background: var(--bg-card, #1a1625);
+    border: 1px solid var(--border, #2d283e);
+    border-left: 5px solid var(--accent, #9d4edd); /* That classic purple border */
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    min-height: 200px;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent, #9d4edd);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.card h3 {
+    margin: 0 0 10px 0;
+    color: var(--gold, #d4af37);
+}
+
+.card p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+/* --- Mastery & Source Tags --- */
+.mastery-tag {
+    align-self: flex-start;
+    background: rgba(157, 78, 221, 0.15);
+    color: #c77dff; /* var(--accent-hover) */
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 15px;
+    border: 1px solid var(--accent, #9d4edd);
+}
+
+.source-tag {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 0.7rem;
+    color: #555;
+    font-style: italic;
+}
+
+.description-text {
+    font-style: italic;
+    color: var(--text-dim, #a0a0a0);
+    margin-top: 10px !important;
+}
 /* Utility */
 .hidden { display: none; }
