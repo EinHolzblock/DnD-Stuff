@@ -1,15 +1,15 @@
-let spells = [];
-let mySpellbook = JSON.parse(localStorage.getItem('mySpellbook')) || [];
+let weapons = [];
+let myArsenal = JSON.parse(localStorage.getItem('myArsenal')) || [];
 
-// 1. Load the JSON data
-async function loadSpells() {
+// 1. Daten laden
+async function loadWeapons() {
     try {
-        const response = await fetch('./spells.json');
-        spells = await response.json();
-        renderSpells(spells);
-        saveAndRenderSpellbook(); // Load saved sheet
+        const response = await fetch('./weapons.json');
+        weapons = await response.json();
+        renderWeapons(weapons);
+        saveAndRenderArsenal(); 
     } catch (error) {
-        console.error("Fehler beim Laden der Spells:", error);
+        console.error("Fehler beim Laden der Waffen:", error);
     }
 }
 
@@ -19,108 +19,82 @@ function toggleMenu() {
 }
 
 function showPage(pageId) {
-    const grimorium = document.getElementById('grimorium-page');
+    const listPage = document.getElementById('grimorium-page'); // Bleibt bei deinem ID-Namen
     const header = document.getElementById('main-header');
-    const spellsheet = document.getElementById('spellsheet-page');
+    const arsenalPage = document.getElementById('spellsheet-page'); 
     
-    if (pageId === 'grimorium') {
-        grimorium.classList.remove('hidden');
+    if (pageId === 'list') {
+        listPage.classList.remove('hidden');
         header.classList.remove('hidden');
-        spellsheet.classList.add('hidden');
+        arsenalPage.classList.add('hidden');
     } else {
-        grimorium.classList.add('hidden');
+        listPage.classList.add('hidden');
         header.classList.add('hidden');
-        spellsheet.classList.remove('hidden');
-        saveAndRenderSpellbook();
+        arsenalPage.classList.remove('hidden');
+        saveAndRenderArsenal();
     }
     toggleMenu();
 }
 
-// 3. Rendering
-function renderSpells(data) {
-    const container = document.getElementById('spell-list');
+// 3. Rendering der Waffenkarten
+function renderWeapons(data) {
+    const container = document.getElementById('spell-list'); // Container-ID aus deinem HTML
     if (!container) return;
 
-    container.innerHTML = data.map(spell => {
-        const classes = spell.classes ? spell.classes.join(', ') : 'Keine';
-        const range = spell['range/area'] || 'N/A';
-        const timeDisplay = spell.ritual ? `${spell.castingTime} (Ritual)` : (spell.castingTime || '1 Aktion');
+    container.innerHTML = data.map(weapon => {
+        const props = weapon.properties ? weapon.properties.join(', ') : 'Keine';
         
-        // --- Inside the renderSpells data.map loop ---
-
-let saveHtml = '';
-if (spell.save) {
-    let successText = '';
-    
-    // Check what is written in the JSON for 'onSuccess'
-    if (spell.onSuccess === 'half') {
-        successText = 'Halber Schaden';
-    } else if (!spell.onSuccess) {
-        successText = 'Kein Effekt';
-    } else {
-        // If it's anything else, use the text exactly as typed in JSON
-        successText = spell.onSuccess;
-    }
-
-    saveHtml = `
-        <p class="save-info">
-            <strong>RW:</strong> ${spell.save} 
-            <br><small>Bei erfolgreichem Wurf: ${successText}</small>
-        </p>
-    `;
-}
+        let saveHtml = '';
+        if (weapon.save) {
+            saveHtml = `
+                <p class="save-info">
+                    <strong>RW:</strong> ${weapon.save} 
+                    <br><small>Bei Erfolg: ${weapon.onSuccess || 'Kein Effekt'}</small>
+                </p>
+            `;
+        }
 
         return `
             <div class="spell-card">
                 <div class="spell-header">
-                    <h3>${spell.name}</h3>
+                    <h3>${weapon.name}</h3>
                     <div>
-                        <button class="add-btn" onclick="addToSpellbook('${spell.name}')">+</button>
-                        <span class="level-badge">Lvl ${spell.level}</span>
+                        <button class="add-btn" onclick="addToArsenal('${weapon.name}')">+</button>
+                        <span class="level-badge">${weapon.mastery}</span>
                     </div>
                 </div>
                 <div class="spell-tags">
-                    ${spell.ritual ? '<span class="tag ritual">R</span>' : ''}
-                    ${spell.concentration ? '<span class="tag concentration">K</span>' : ''}
+                    <span class="tag ritual">${weapon.damageType}</span>
                 </div>
-                <p class="meta"><em>${spell.school} • ${range}</em><br>
-                <small>⌛ Dauer: ${spell.duration || 'Unmittelbar'}</small></p>
+                <p class="meta"><em>Eigenschaften: ${props}</em></p>
                 <div class="spell-stats">
-                    ${spell.damage ? `<p><strong>DMG:</strong> ${spell.damage} (${spell.damageType})</p>` : ''}
-                    ${spell.effect ? `<p><strong>Effekt:</strong> ${spell.effect}</p>` : ''}
+                    <p><strong>Schaden:</strong> ${weapon.damage} (${weapon.damageType})</p>
+                    <p><strong>Meister-Effekt:</strong> ${weapon.masteryEffect}</p>
                     ${saveHtml}
                 </div>
-                <div class="spell-details">
-                    <p><strong>Zeit:</strong> ${timeDisplay}</p>
-                    <p><strong>Klassen:</strong> ${classes}</p>
-                </div>
-                ${spell.desc ? `<details class="spell-desc"><summary>Beschreibung</summary><div class="desc-content">${spell.desc}</div></details>` : ''}
+                ${weapon.desc ? `<details class="spell-desc"><summary>Details</summary><div class="desc-content">${weapon.desc}</div></details>` : ''}
             </div>
         `;
     }).join('');
 }
 
-// 4. Spellbook & Tooltip Logic
+// 4. Arsenal (Dein "Spellbook") & Tooltip
 const tooltip = document.getElementById('tooltip');
 
-function showTooltip(e, spellName) {
-    const spell = spells.find(s => s.name === spellName);
-    if (!spell) return;
-    
-    // Fixed: range variable wasn't defined here, so we get it from the spell object
-    const range = spell['range/area'] || 'N/A';
+function showTooltip(e, weaponName) {
+    const w = weapons.find(item => item.name === weaponName);
+    if (!w) return;
     
     tooltip.innerHTML = `
-        <strong>${spell.name}</strong><br>
-        <small>Lvl ${spell.level} ${spell.school}</small><br>
-        <small>Duration: ${spell.duration || 'Unmittelbar'}, Range: ${range}</small><br>
-        <small>Zeit: ${spell.castingTime || 'N/A'}</small>
+        <strong>${w.name}</strong><br>
+        <small>Meisterschaft: ${w.mastery}</small><br>
+        <small>Schaden: ${w.damage}</small>
         <p style="font-size:0.8rem; margin-top:5px; border-top: 1px solid #444; padding-top: 5px;">
-            ${spell.desc ? spell.desc.substring(0, 200) + '...' : 'Keine Beschreibung'}
+            ${w.masteryEffect}
         </p>`;
     
     tooltip.classList.remove('hidden');
-    moveTooltip(e); // Added to ensure it positions immediately
+    moveTooltip(e);
 }
 
 function moveTooltip(e) {
@@ -128,75 +102,56 @@ function moveTooltip(e) {
     tooltip.style.top = (e.clientY + 15) + 'px';
 }
 
-function hideTooltip() { 
-    tooltip.classList.add('hidden'); 
-}
+function hideTooltip() { tooltip.classList.add('hidden'); }
 
-function addToSpellbook(name) {
-    if (!mySpellbook.includes(name)) {
-        mySpellbook.push(name);
-        saveAndRenderSpellbook();
+function addToArsenal(name) {
+    if (!myArsenal.includes(name)) {
+        myArsenal.push(name);
+        saveAndRenderArsenal();
     }
 }
 
-function removeFromSpellbook(name) {
-    mySpellbook = mySpellbook.filter(n => n !== name);
-    saveAndRenderSpellbook();
+function removeFromArsenal(name) {
+    myArsenal = myArsenal.filter(n => n !== name);
+    saveAndRenderArsenal();
 }
 
-function saveAndRenderSpellbook() {
-    localStorage.setItem('mySpellbook', JSON.stringify(mySpellbook));
+function saveAndRenderArsenal() {
+    localStorage.setItem('myArsenal', JSON.stringify(myArsenal));
     const list = document.getElementById('spellbook-list');
     if (!list) return;
 
-    list.innerHTML = mySpellbook.map(name => {
-        const spell = spells.find(s => s.name === name);
-        const grade = spell ? (spell.level === 0 ? "T" : spell.level) : "?";
+    list.innerHTML = myArsenal.map(name => {
+        const w = weapons.find(item => item.name === name);
+        const masteryTag = w ? w.mastery : "?";
         return `
             <div class="spellbook-item" onmousemove="moveTooltip(event)" onmouseenter="showTooltip(event, '${name}')" onmouseleave="hideTooltip()">
-                <span><span class="spell-grade">[Lvl ${grade}]</span> <strong>${name}</strong></span>
-                <span onclick="removeFromSpellbook('${name}')" style="color:red; cursor:pointer; font-weight:bold; padding: 0 5px;">×</span>
+                <span><span class="spell-grade">[${masteryTag}]</span> <strong>${name}</strong></span>
+                <span onclick="removeFromArsenal('${name}')" style="color:red; cursor:pointer; font-weight:bold; padding: 0 5px;">×</span>
             </div>
         `;
     }).join('');
 }
 
-// 5. Filters
+// 5. Filter
 function filterData() {
     const n = document.getElementById('searchName').value.toLowerCase();
-    const l = document.getElementById('filterLevel').value;
-    const c = document.getElementById('filterClass').value;
-    const d = document.getElementById('searchDuration').value.toLowerCase();
+    const m = document.getElementById('filterMastery').value.toLowerCase();
 
-    const filtered = spells.filter(s => {
-        return s.name.toLowerCase().includes(n) &&
-               (l === "" || s.level.toString() === l) &&
-               (c === "" || (s.classes && s.classes.includes(c))) &&
-               (d === "" || (s.duration && s.duration.toLowerCase().includes(d)));
+    const filtered = weapons.filter(w => {
+        return w.name.toLowerCase().includes(n) &&
+               (m === "" || w.mastery.toLowerCase() === m);
     });
-    renderSpells(filtered);
-}
-
-function resetFilters() {
-    document.getElementById('searchName').value = "";
-    document.getElementById('searchDuration').value = "";
-    document.getElementById('filterLevel').value = "";
-    document.getElementById('filterClass').value = "";
-    renderSpells(spells);
+    renderWeapons(filtered);
 }
 
 // Startup
 document.addEventListener('DOMContentLoaded', () => {
-    loadSpells();
+    loadWeapons();
     
-    // Event Listeners for Filters
     const searchName = document.getElementById('searchName');
-    const searchDur = document.getElementById('searchDuration');
-    const filtLvl = document.getElementById('filterLevel');
-    const filtCls = document.getElementById('filterClass');
+    const filtMast = document.getElementById('filterMastery');
 
     if(searchName) searchName.addEventListener('input', filterData);
-    if(searchDur) searchDur.addEventListener('input', filterData);
-    if(filtLvl) filtLvl.addEventListener('change', filterData);
-    if(filtCls) filtCls.addEventListener('change', filterData);
+    if(filtMast) filtMast.addEventListener('change', filterData);
 });
