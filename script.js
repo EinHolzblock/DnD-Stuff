@@ -7,90 +7,89 @@ async function loadSpells() {
         const response = await fetch('./spells.json');
         spells = await response.json();
         renderSpells(spells);
+        saveAndRenderSpellbook(); // Load saved sheet
     } catch (error) {
         console.error("Fehler beim Laden der Spells:", error);
     }
 }
 
-// 2. Display the spells (Use your existing renderSpells code here)
+// 2. Navigation
+function toggleMenu() {
+    document.getElementById('nav-menu').classList.toggle('hidden');
+}
+
+function showPage(pageId) {
+    const grimorium = document.getElementById('grimorium-page');
+    const header = document.getElementById('main-header');
+    const spellsheet = document.getElementById('spellsheet-page');
+    
+    if (pageId === 'grimorium') {
+        grimorium.classList.remove('hidden');
+        header.classList.remove('hidden');
+        spellsheet.classList.add('hidden');
+    } else {
+        grimorium.classList.add('hidden');
+        header.classList.add('hidden');
+        spellsheet.classList.remove('hidden');
+        saveAndRenderSpellbook();
+    }
+    toggleMenu();
+}
+
+// 3. Rendering
 function renderSpells(data) {
     const container = document.getElementById('spell-list');
     if (!container) return;
 
     container.innerHTML = data.map(spell => {
         const classes = spell.classes ? spell.classes.join(', ') : 'Keine';
-        const components = spell.components ? spell.components.join(', ') : 'V, S';
         const range = spell['range/area'] || 'N/A';
+        const timeDisplay = spell.ritual ? `${spell.castingTime} (Ritual)` : (spell.castingTime || '1 Aktion');
         
-        // Handle Casting Time + Ritual logic
-        const timeDisplay = spell.ritual 
-            ? `${spell.castingTime || '1 Aktion'} (oder Ritual)` 
-            : (spell.castingTime || '1 Aktion');
-
-        // Handle Saving Throw logic
         let saveHtml = '';
         if (spell.save) {
-            const successText = spell.onSuccess === 'half' ? 'Halber Schaden' : (spell.onSuccess || 'Kein Effekt');
-            saveHtml = `<p class="save-info"><strong>RW:</strong> ${spell.save} <small>(${successText})</small></p>`;
+            const success = spell.onSuccess === 'half' ? 'Halber Schaden' : (spell.onSuccess || 'Kein Effekt');
+            saveHtml = `<p class="save-info"><strong>RW:</strong> ${spell.save} <small>(${success})</small></p>`;
         }
 
         return `
             <div class="spell-card">
                 <div class="spell-header">
                     <h3>${spell.name}</h3>
-                    <div class="header-actions">
+                    <div>
                         <button class="add-btn" onclick="addToSpellbook('${spell.name}')">+</button>
                         <span class="level-badge">Lvl ${spell.level}</span>
                     </div>
                 </div>
-                
                 <div class="spell-tags">
                     ${spell.ritual ? '<span class="tag ritual">R</span>' : ''}
                     ${spell.concentration ? '<span class="tag concentration">K</span>' : ''}
                 </div>
-
                 <p class="meta"><em>${spell.school} • ${range}</em><br>
-                    <small>⌛ Wirkungsdauer: ${spell.duration || 'Unmittelbar'}</small>
-                </p>
-                
+                <small>⌛ Dauer: ${spell.duration || 'Unmittelbar'}</small></p>
                 <div class="spell-stats">
-                    ${spell.damage ? `<p><strong>Schaden:</strong> ${spell.damage} (${spell.damageType})</p>` : ''}
+                    ${spell.damage ? `<p><strong>DMG:</strong> ${spell.damage} (${spell.damageType})</p>` : ''}
                     ${spell.effect ? `<p><strong>Effekt:</strong> ${spell.effect}</p>` : ''}
                     ${saveHtml}
                 </div>
-
                 <div class="spell-details">
                     <p><strong>Zeit:</strong> ${timeDisplay}</p>
-                    <p><strong>Komponenten:</strong> ${components}</p>
-                    ${spell.materials ? `<p class="materials"><em>M: ${spell.materials}</em></p>` : ''}
+                    <p><strong>Klassen:</strong> ${classes}</p>
                 </div>
-
-                ${spell.desc ? `
-                <details class="spell-desc">
-                    <summary>Beschreibung anzeigen</summary>
-                    <div class="desc-content">${spell.desc}</div>
-                </details>
-                ` : ''}
-
-                <p class="classes"><strong>Klassen:</strong> ${classes}</p>
-                <p class="source">${spell.source || ''}</p>
-            </div> `;
+                ${spell.desc ? `<details class="spell-desc"><summary>Beschreibung</summary><div class="desc-content">${spell.desc}</div></details>` : ''}
+            </div>
+        `;
     }).join('');
 }
 
-// --- SPELLBOOK & TOOLTIP LOGIC ---
+// 4. Spellbook & Tooltip Logic
 const tooltip = document.getElementById('tooltip');
 
 function showTooltip(e, spellName) {
     const spell = spells.find(s => s.name === spellName);
     if (!spell) return;
-    tooltip.innerHTML = `
-        <div style="border-bottom:1px solid #d4af37; margin-bottom:5px;"><strong>${spell.name}</strong></div>
-        <small>${spell.school} • ${spell.level === 0 ? 'Zaubertrick' : 'Lvl ' + spell.level}</small>
-        <p style="font-size: 0.8rem; margin-top:5px;">${spell.desc ? spell.desc.substring(0, 150) + '...' : 'Keine Beschreibung'}</p>
-    `;
+    tooltip.innerHTML = `<strong>${spell.name}</strong><br><small>Lvl ${spell.level} ${spell.school}</small><p style="font-size:0.8rem; margin-top:5px;">${spell.desc ? spell.desc.substring(0, 200) + '...' : ''}</p>`;
     tooltip.classList.remove('hidden');
-    moveTooltip(e);
 }
 
 function moveTooltip(e) {
@@ -108,7 +107,7 @@ function addToSpellbook(name) {
 }
 
 function removeFromSpellbook(name) {
-    mySpellbook = mySpellbook.filter(s => s !== name);
+    mySpellbook = mySpellbook.filter(n => n !== name);
     saveAndRenderSpellbook();
 }
 
@@ -116,64 +115,45 @@ function saveAndRenderSpellbook() {
     localStorage.setItem('mySpellbook', JSON.stringify(mySpellbook));
     const list = document.getElementById('spellbook-list');
     if (!list) return;
-    
-    if (mySpellbook.length === 0) {
-        list.innerHTML = '<p style="color:#666; font-size:0.8rem;">Noch keine Zauber...</p>';
-        return;
-    }
 
-    list.innerHTML = mySpellbook.map(name => `
-        <div class="spellbook-item" 
-             onmousemove="moveTooltip(event)" 
-             onmouseenter="showTooltip(event, '${name}')" 
-             onmouseleave="hideTooltip()">
-            <span>${name}</span>
-            <span class="remove-btn" onclick="removeFromSpellbook('${name}')">×</span>
-        </div>
-    `).join('');
+    list.innerHTML = mySpellbook.map(name => {
+        const spell = spells.find(s => s.name === name);
+        const grade = spell ? (spell.level === 0 ? "T" : spell.level) : "?";
+        return `
+            <div class="spellbook-item" onmousemove="moveTooltip(event)" onmouseenter="showTooltip(event, '${name}')" onmouseleave="hideTooltip()">
+                <span><span class="spell-grade">[Lvl ${grade}]</span> <strong>${name}</strong></span>
+                <span onclick="removeFromSpellbook('${name}')" style="color:red; cursor:pointer;">×</span>
+            </div>
+        `;
+    }).join('');
 }
 
-// 3. Search and Filter Logic
+// 5. Filters
 function filterData() {
-    const nameQuery = document.getElementById('searchName').value.toLowerCase();
-    const levelQuery = document.getElementById('filterLevel').value;
-    const classQuery = document.getElementById('filterClass').value;
-    const schoolQuery = document.getElementById('filterSchool').value;
+    const n = document.getElementById('searchName').value.toLowerCase();
+    const l = document.getElementById('filterLevel').value;
+    const c = document.getElementById('filterClass').value;
+    const d = document.getElementById('searchDuration').value.toLowerCase();
 
-    const filtered = spells.filter(spell => {
-        const matchesName = spell.name.toLowerCase().includes(nameQuery);
-        const matchesLevel = levelQuery === "" || spell.level.toString() === levelQuery;
-        const matchesSchool = schoolQuery === "" || spell.school === schoolQuery;
-        const matchesClass = classQuery === "" || (spell.classes && spell.classes.includes(classQuery));
-
-        return matchesName && matchesLevel && matchesSchool && matchesClass;
+    const filtered = spells.filter(s => {
+        return s.name.toLowerCase().includes(n) &&
+               (l === "" || s.level.toString() === l) &&
+               (c === "" || (s.classes && s.classes.includes(c))) &&
+               (d === "" || (s.duration && s.duration.toLowerCase().includes(d)));
     });
-
     renderSpells(filtered);
 }
 
-// 4. Reset Filters
 function resetFilters() {
-    document.getElementById('searchName').value = "";
-    document.getElementById('filterLevel').value = "";
-    document.getElementById('filterClass').value = "";
-    document.getElementById('filterSchool').value = "";
+    document.querySelectorAll('input, select').forEach(i => i.value = "");
     renderSpells(spells);
 }
 
-// 5. ATTACH LISTENERS ONLY WHEN DOM IS READY
+// Startup
 document.addEventListener('DOMContentLoaded', () => {
     loadSpells();
-    saveAndRenderSpellbook();
-
-    // Select all inputs and add listeners automatically
-    const searchInput = document.getElementById('searchName');
-    const selects = ['filterLevel', 'filterClass', 'filterSchool'];
-
-    if(searchInput) searchInput.addEventListener('input', filterData);
-    
-    selects.forEach(id => {
-        const el = document.getElementById(id);
-        if(el) el.addEventListener('change', filterData);
-    });
+    document.getElementById('searchName').addEventListener('input', filterData);
+    document.getElementById('searchDuration').addEventListener('input', filterData);
+    document.getElementById('filterLevel').addEventListener('change', filterData);
+    document.getElementById('filterClass').addEventListener('change', filterData);
 });
