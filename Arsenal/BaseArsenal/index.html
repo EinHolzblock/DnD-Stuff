@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Base Arsenal</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<div id="nav-container">
+  <div id="hamburger" onclick="toggleMenu()">☰</div>
+  <div id="nav-menu" class="hidden">
+    <a href="../index.html">🛡️ Zurück zum Arsenal</a>
+    <a href="../../index.html">🏠 Hauptmenü</a>
+  </div>
+</div>
+<header id="main-header">
+  <h1>⚒️ Base Arsenal</h1>
+  <div class="filter-group">
+    <input type="text" id="searchName" placeholder="Gegenstand suchen..." onkeyup="applyFilters()">
+    <select id="filterType" onchange="applyFilters()">
+      <option value="">Alle Typen</option>
+      <option value="Ausrüstung">Ausrüstung</option>
+      <option value="Rüstung">Rüstung</option>
+      <option value="Werkzeug">Werkzeug</option>
+    </select>
+  </div>
+</header>
+<main><div id="item-grid" class="spell-grid"></div></main>
+<script src="script.js"></script>
+</body>
+</html>
