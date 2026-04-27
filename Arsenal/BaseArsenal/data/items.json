@@ -37,5 +37,18 @@
         "mastery": "Umstoßen",
         "description": "",
         "source": "PHB 2024"
+    },
+    {
+        "name": "Knüppel",
+        "category": "Weapon",
+        "type": "Simple Melee Weapon",
+        "cost": "1 SM",
+        "weight": "1 kg",
+        "damage": "1d4 Wucht",
+        "ac": "",
+        "properties": "Leicht",
+        "mastery": "Verlangsamen",
+        "description": "",
+        "source": "PHB 2024"
     }
 ]
