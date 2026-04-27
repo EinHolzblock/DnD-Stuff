@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Cleave",
+    "translation": "Spalten",
+    "description": "Wenn du eine Kreatur mit einer Nahkampfattacke triffst, kannst du innerhalb deiner Reichweite einen zweiten Angriff gegen eine andere Kreatur ausführen.",
+    "requirement": "Melee Weapon, Heavy Property"
+  },
+  {
+    "name": "Topple",
+    "translation": "Umwerfen",
+    "description": "Bei einem Treffer muss das Ziel einen Konstitutionsrettungswurf bestehen oder es fällt liegend (Prone).",
+    "requirement": "None"
+  }
+]
