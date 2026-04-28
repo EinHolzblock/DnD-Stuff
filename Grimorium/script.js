@@ -73,33 +73,38 @@ if (spell.save) {
     `;
 }
 
-        return `
-            <div class="spell-card">
-                <div class="spell-header">
-                    <h3>${spell.name}</h3>
-                    <div>
-                        <button class="add-btn" onclick="addToSpellbook('${spell.name}')">+</button>
-                        <span class="level-badge">Lvl ${spell.level}</span>
+        // Inside your renderSpells(data) map loop:
+            return `
+                <div class="spell-card">
+                    <div class="spell-header">
+                        <h3>${spell.name}</h3>
+                        <div>
+                            <button class="add-btn" onclick="addToSpellbook('${spell.name}')">+</button>
+                            <span class="level-badge">Lvl ${spell.level}</span>
+                        </div>
                     </div>
+                    <div class="spell-tags">
+                        ${spell.ritual ? '<span class="tag ritual">R</span>' : ''}
+                        ${spell.concentration ? '<span class="tag concentration">K</span>' : ''}
+                    </div>
+                    <p class="meta"><em>${spell.school} • ${range}</em><br>
+                    <small>⌛ Dauer: ${spell.duration || 'Unmittelbar'}</small></p>
+                    
+                    <div class="spell-stats">
+                        ${spell.damage ? `<p><strong>DMG:</strong> ${spell.damage} (${spell.damageType})</p>` : ''}
+                        ${spell.effect ? `<p><strong>Effekt:</strong> ${spell.effect}</p>` : ''}
+                        ${saveHtml}
+                    </div>
+
+                    <div class="spell-details">
+                        <p><strong>Zeit:</strong> ${timeDisplay}</p>
+                        <p><strong>Klassen:</strong> ${classes}</p>
+                        ${spell.source ? `<p><strong>Quelle:</strong> ${spell.source}</p>` : ''}
+                    </div>
+
+                    ${spell.desc ? `<details class="spell-desc"><summary>Beschreibung</summary><div class="desc-content">${spell.desc}</div></details>` : ''}
                 </div>
-                <div class="spell-tags">
-                    ${spell.ritual ? '<span class="tag ritual">R</span>' : ''}
-                    ${spell.concentration ? '<span class="tag concentration">K</span>' : ''}
-                </div>
-                <p class="meta"><em>${spell.school} • ${range}</em><br>
-                <small>⌛ Dauer: ${spell.duration || 'Unmittelbar'}</small></p>
-                <div class="spell-stats">
-                    ${spell.damage ? `<p><strong>DMG:</strong> ${spell.damage} (${spell.damageType})</p>` : ''}
-                    ${spell.effect ? `<p><strong>Effekt:</strong> ${spell.effect}</p>` : ''}
-                    ${saveHtml}
-                </div>
-                <div class="spell-details">
-                    <p><strong>Zeit:</strong> ${timeDisplay}</p>
-                    <p><strong>Klassen:</strong> ${classes}</p>
-                </div>
-                ${spell.desc ? `<details class="spell-desc"><summary>Beschreibung</summary><div class="desc-content">${spell.desc}</div></details>` : ''}
-            </div>
-        `;
+            `;
     }).join('');
 }
 

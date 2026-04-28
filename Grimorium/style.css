@@ -169,5 +169,11 @@ input, select, .filter-group button {
 }
 input:focus, select:focus { border-color: var(--accent); }
 
+.source-info {
+    color: #888;
+    margin-top: 5px;
+    font-style: italic;
+}
+
 /* Utility */
 .hidden { display: none !important; }
