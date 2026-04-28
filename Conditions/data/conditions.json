@@ -1,13 +1,5 @@
 [
   {
-    "_comment": "THIS IS A TEMPLATE",
-    "name": "",
-    "translation": "",
-    "category": "",
-    "source": "",
-    "effect": ""
-  },
-  {
     "name": "Poisoned",
     "translation": "Vergiftet",
     "category": "Condition",
