@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Guide | DnD Workshop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="nav-container">
+        <div id="hamburger" onclick="toggleMenu()">☰</div>
+        <a href="index.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">Workshop Portal</a>
+        <div id="nav-menu" class="hidden">
+            <a href="grimorium.html">Grimorium</a>
+            <a href="arsenal.html">Arsenal</a>
+            <a href="conditions.html">Zustände</a>
+        </div>
+    </div>
+
+    <header>
+        <h1>Dice <span class="accent">Probability</span></h1>
+        <p class="subtitle">Analysiere den Erwartungswert deiner Würfe</p>
+    </header>
+
+    <main class="portal-container">
+        <section class="card">
+            <h3>Würfel-Rechner</h3>
+            <div class="filter-group">
+                <input type="number" id="diceCount" value="4" min="1" max="100">
+                <span>d</span>
+                <select id="diceType">
+                    <option value="4">4</option>
+                    <option value="6" selected>6</option>
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                    <option value="20">20</option>
+                    <option value="100">100</option>
+                </select>
+                <button onclick="calculateStats()">Berechnen</button>
+            </div>
+        </section>
+
+        <section class="card" id="result-card">
+            <h3 id="displayRoll">4d6</h3>
+            <div id="stats-output">
+                <p>Durchschnitt: <strong id="avg-val" class="gold">14</strong></p>
+                <p>Spanne: <span id="range-val">4 - 24</span></p>
+                <div id="reliability-tag" class="mastery-tag">Reliability: High</div>
+            </div>
+        </section>
+    </main>
+
+    <section class="portal-container" style="margin-top: 0;">
+        <div class="card">
+            <h3>Quick Reference</h3>
+            <p><b>Advantage:</b> Erhöht den Schnitt um ca. +3.3</p>
+            <p><b>Disadvantage:</b> Senkt den Schnitt um ca. -3.3</p>
+            <p class="description-text">Mehr Würfel führen zu einer Glockenkurve (Bell Curve), was die Ergebnisse vorhersehbarer macht.</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
