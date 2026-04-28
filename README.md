@@ -6,7 +6,7 @@
 ---
 
 ## 🧭 Navigation
-**[🇩🇪 Deutsch](#-deutsch)** | **[🇺🇸 English](#-english)** | **[⚖️ Legal](#-legal-rechtliches)**
+**[🇩🇪 Deutsch](#-deutsch)** | **[🇺🇸 English](#-english)** | **[⚖️ Legal](https://github.com/EinHolzblock/DnD-Stuff/tree/main#%EF%B8%8F-legal--rechtliches)**
 
 ---
 
