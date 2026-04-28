@@ -8,7 +8,7 @@
 ---
 
 ## 🧭 Navigation
-**[🇩🇪 Deutsch](#-deutsch)** | **[🇺🇸 English](#-english)** | **[⚖️ Legal & Disclaimer](#-legal--rechtliches)**
+**[🇩🇪 Deutsch](#-deutsch)** | **[🇺🇸 English](#-english)** | **[⚖️ Legal & Disclaimer](#-legal-rechtliches)**
 
 ---
 
