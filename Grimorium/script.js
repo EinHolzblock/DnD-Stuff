@@ -168,13 +168,19 @@ function saveAndRenderSpellbook() {
 function filterData() {
     const n = document.getElementById('searchName').value.toLowerCase();
     const l = document.getElementById('filterLevel').value;
-    const c = document.getElementById('filterClass').value;
+    const c = document.getElementById('filterClass').value; // This is now "Magier|Wizard"
     const d = document.getElementById('searchDuration').value.toLowerCase();
 
     const filtered = spells.filter(s => {
+        // Split the combined value into an array, e.g., ["Magier", "Wizard"]
+        const classOptions = c.split('|');
+
+        // Check if the spell's classes include ANY of the options in the array
+        const classMatch = c === "" || (s.classes && s.classes.some(cls => classOptions.includes(cls)));
+
         return s.name.toLowerCase().includes(n) &&
                (l === "" || s.level.toString() === l) &&
-               (c === "" || (s.classes && s.classes.includes(c))) &&
+               classMatch &&
                (d === "" || (s.duration && s.duration.toLowerCase().includes(d)));
     });
     renderSpells(filtered);
