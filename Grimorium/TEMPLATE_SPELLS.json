@@ -1,6 +1,4 @@
-[
   {
-    "_template_info": "Fill out all keys. Use null or an empty string if not applicable.",
     "name": "Spell Name",
     "castingTime": "1 Action / 1 Bonus Action / 1 Minute",
     "level": 0,
@@ -8,7 +6,7 @@
     "classes": ["Wizard", "Sorcerer"],
     "components": ["V", "S", "M"],
     "materials": "",
-    "rangeArea": "30 Feet / Self",
+    "range/area": "30 Feet / Self",
     "source": "PHB 2024",
     "concentration": false,
     "ritual": false,
@@ -19,4 +17,3 @@
     "onSuccessfulSave": "",
     "desc": ""
   }
-]

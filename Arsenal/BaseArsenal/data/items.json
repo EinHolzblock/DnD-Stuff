@@ -50,5 +50,31 @@
         "mastery": "Verlangsamen",
         "description": "",
         "source": "PHB 2024"
+    },
+    {
+        "ac": "",
+        "category": "Weapon",
+        "cost": "2 GM",
+        "damage":"1d4 Wucht",
+        "description": "",
+        "mastery": "Einkerben",
+        "name": "Leichter Hammer",
+        "properties":"Leicht, Wurfwaffe (Reichweite 6/18)",
+        "source": "PHB 2024",
+        "type":"Simple Melee Weapon",
+        "weight": "1 kg"
+    },
+    {
+        "ac": "",
+        "category": "Weapon",
+        "cost": "1 GM",
+        "damage": "1d4 Hieb",
+        "description": "",
+        "mastery": "Einkerben",
+        "name": "SIchel",
+        "properties":"Leicht",
+        "source": "PHB 2024",
+        "type": "Simple Melee Weapon",
+        "weight": "1 kg"
     }
 ]
