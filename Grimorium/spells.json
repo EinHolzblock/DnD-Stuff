@@ -1,26 +1,4 @@
 [
-    {
-        "_comment": "THIS IS A TEMPLATE",
-        "name": "",
-        "castingTime": "",
-        "_comment2": "Level uses number (0 - 9)"
-        "level": ,
-        "school": "",
-        "classes": [""],
-        "components": [""]
-        "materials": "",
-        "range/area": "",
-        "source": "",
-        "_comment3" : "The next two keys only use true / false"
-        "concentration": ,
-        "ritual" : ,
-        "duration": "",
-        "damage": "",
-        "damageType": "",
-        "save": "",
-        "onSuccesfulSave": "",
-        "desc": "",   
-    }
     { 
         "name": "Aberration herbeirufen", 
         "level": 4, 
