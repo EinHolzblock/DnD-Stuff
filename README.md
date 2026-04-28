@@ -42,6 +42,10 @@ A minimalist, high-speed toolkit for the gaming table, covering **D&D 5e (2014 &
 
 ## ⚖️ Legal / Rechtliches
 
+## License & Re-Hosting
+Copyright (c) 2026 Tim Reinisch (EinHolzblock). All Rights Reserved.
+Dieses Projekt ist keine Open-Source-Software. Das Kopieren des Quellcodes sowie das Re-Hosting oder Mirroring der Webseite auf Plattformen wie GitHub Pages, Cloudflare Pages, Vercel oder eigenen Servern ist strikt untersagt, sofern keine schriftliche Genehmigung vorliegt.
+
 ### Fan Content Policy
 This website is unofficial Fan Content permitted under the **Wizards of the Coast Fan Content Policy**. This project is not approved, sponsored, or endorsed by Wizards of the Coast. 
 
@@ -53,4 +57,4 @@ Der Ersteller übernimmt keine Haftung für die Richtigkeit der Daten im Verglei
 
 ---
 
-**EinHolzblock** | [Kontakt & Impressum](CONTACT.md) | [Copyright](./COPYRIGHT)
+**EinHolzblock** | [Kontakt & Impressum](CONTACT.md) | [License](./LICENSE)

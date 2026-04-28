@@ -1,3 +1,6 @@
+/* * Copyright (c) 2026 Tim Reinisch. All Rights Reserved.
+ * Unauthorized re-hosting or redistribution is strictly prohibited.
+ */
 let rules = [];
 
 async function loadRules() {

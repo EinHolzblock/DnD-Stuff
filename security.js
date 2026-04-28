@@ -1,3 +1,6 @@
+/* * Copyright (c) 2026 Tim Reinisch. All Rights Reserved.
+ * Unauthorized re-hosting or redistribution is strictly prohibited.
+ */
 document.addEventListener("DOMContentLoaded", () => {
     const authorizedDomain = "einholzblock.github.io"; // Deine Domain
     const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";

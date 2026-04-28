@@ -1,3 +1,6 @@
+/* * Copyright (c) 2026 Tim Reinisch. All Rights Reserved.
+ * Unauthorized re-hosting or redistribution is strictly prohibited.
+ */
 let items = [];
 async function loadItems() {
     const res = await fetch('./data/items.json');
