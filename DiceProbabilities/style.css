@@ -1,0 +1,83 @@
+:root {
+    --bg-dark: #0f0c18;
+    --bg-card: #1a1625;
+    --accent: #9d4edd;
+    --accent-hover: #c77dff;
+    --text-main: #e0e0e0;
+    --text-dim: #a0a0a0;
+    --border: #2d283e;
+    --gold: #d4af37;
+    /* Probability Colors */
+    --low-chaos: #50fa7b; /* Green */
+    --med-chaos: #ffb86c; /* Orange */
+    --high-chaos: #ff5555; /* Red */
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+}
+
+#nav-container {
+    padding: 15px 20px;
+    background: var(--bg-card);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+header { padding: 40px; text-align: center; }
+.accent { color: var(--accent); }
+.gold { color: var(--gold); font-size: 1.5rem; }
+
+.portal-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto 40px auto;
+}
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--accent);
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.filter-group { display: flex; align-items: center; gap: 10px; margin-top: 15px; }
+
+input, select, button {
+    background: #251f35;
+    border: 1px solid var(--border);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button { background: var(--accent); cursor: pointer; border: none; font-weight: bold; }
+button:hover { background: var(--accent-hover); }
+
+.mastery-tag {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* Reliability Classes */
+.rel-high { background: rgba(80, 250, 123, 0.1); color: var(--low-chaos); border: 1px solid var(--low-chaos); }
+.rel-med { background: rgba(255, 184, 108, 0.1); color: var(--med-chaos); border: 1px solid var(--med-chaos); }
+.rel-low { background: rgba(255, 85, 85, 0.1); color: var(--high-chaos); border: 1px solid var(--high-chaos); }
+
+.hidden { display: none; }
