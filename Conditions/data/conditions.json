@@ -1,16 +1,24 @@
 [
-  {
-    "name": "Poisoned",
-    "translation": "Vergiftet",
-    "category": "Condition",
-    "source": "PHB 2024",
-    "effect": "Eine vergiftete Kreatur hat Nachteil auf Angriffswürfe und Fähigkeitsprüfungen."
-  },
-  {
-    "name": "Jumping",
-    "translation": "Springen",
-    "category": "Function",
-    "source": "PHB 2024",
-    "effect": "Wenn du in diesem Zug mind.  3 Meter dich bewegt hast, kannst du bis zu 1/3 deines Stärkewertes springen. Jeder gesprungene Meter kostet einen Meter deiner Bewegungsrate"
-  }
+	{
+		"name": "Poisoned",
+		"translation": "Vergiftet",
+		"category": "Condition",
+		"source": "PHB 2024",
+		"effect": "Eine vergiftete Kreatur hat Nachteil auf Angriffswürfe und Fähigkeitsprüfungen."
+	},
+	{
+	"name": "Jumping",
+	"translation": "Springen",
+	"category": "Function",
+	"source": "PHB 2024",
+	"effect": "Wenn du in diesem Zug mind.  3 Meter dich bewegt hast, kannst du bis zu 1/3 deines Stärkewertes springen. Jeder gesprungene Meter kostet einen Meter deiner Bewegungsrate"
+ 	},
+    {
+    	"name": "Adventure",
+        "translation": "Abenteuer",
+        "category": "Function",
+        "source": "PHB 2024",
+        "effect": "Ein Abenteuer ist eine Serie von Begegnungen. Aus den beim Durchspielen erlebten Geschehnissen entwickelt sich eine Geschichte. Siehe auch -- Begegnung --"
+    }
+
 ]
