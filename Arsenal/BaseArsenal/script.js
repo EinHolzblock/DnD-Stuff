@@ -36,7 +36,7 @@ function render(list) {
 
         // 2. Crafting Time Logic (Shows for any item if key exists)
         const craftingDisplay = i.craftingTime 
-            ? `<p class="crafting-text"><b>⏱ Schmiedezeit:</b> ${i.craftingTime}</p>` 
+            ? `<p class="crafting-text"><b>⏱ Crafting Time:</b> ${i.craftingTime}</p>` 
             : '';
 
         const masteryTag = i.mastery 
