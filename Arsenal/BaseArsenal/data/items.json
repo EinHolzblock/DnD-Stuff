@@ -90,7 +90,7 @@
         "weight": "1,5 kg"
     },
     {
-        "name": "Streitkolben";
+        "name": "Streitkolben",
         "category": "Weapon",
         "cost": "5 GM",
         "damage": "1d6 Wucht",
