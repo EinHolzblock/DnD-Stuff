@@ -91,6 +91,7 @@
     },
     {
         "name": "Streitkolben",
+        "type": "Simple Melee Weapon",
         "category": "Weapon",
         "cost": "5 GM",
         "damage": "1d6 Wucht",
