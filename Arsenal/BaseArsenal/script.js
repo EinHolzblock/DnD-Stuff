@@ -53,12 +53,22 @@ function render(list) {
 function applyFilters() {
     const nameSearch = document.getElementById('searchName').value.toLowerCase();
     const typeFilter = document.getElementById('filterType').value;
+    const subTypeFilter = document.getElementById('filterSubType').value;
 
     const filtered = items.filter(i => {
         const matchesName = i.name.toLowerCase().includes(nameSearch);
+        
+        // Match Category (Handling the plural/singular issue)
+        // If your JSON uses "Weapon", change the HTML value to "Weapon" 
+        // OR use .startsWith() as a safety net:
         const matchesType = typeFilter === "" || i.category === typeFilter;
-        return matchesName && matchesType;
+
+        // Match Sub-Type (e.g., "Simple Melee Weapon")
+        const matchesSubType = subTypeFilter === "" || i.type === subTypeFilter;
+
+        return matchesName && matchesType && matchesSubType;
     });
+
     render(filtered);
 }
 
