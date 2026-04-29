@@ -22,14 +22,22 @@ function render(list) {
         const div = document.createElement('div');
         div.className = 'card'; 
         
+        // 1. Category Specific Logic (Damage, AC, etc.)
         let details = "";
         if (i.category === "Weapon") {
             details = `<p><b>Schaden:</b> ${i.damage || '-'}</p>`;
         } else if (i.category === "Armor") {
-            details = `<p><b>RK (AC):</b> ${i.ac || '-'}</p>`;
+            const strReq = i.str ? `<p><b>Stärke:</b> ${i.str}</p>` : '';
+            const stealthDis = i.stealth ? `<p><b>Heimlichkeit:</b> Nachteil</p>` : '';
+            details = `<p><b>RK (AC):</b> ${i.ac || '-'}</p>${strReq}${stealthDis}`;
         } else {
             details = i.description ? `<p class="description-text">${i.description}</p>` : "";
         }
+
+        // 2. Crafting Time Logic (Shows for any item if key exists)
+        const craftingDisplay = i.craftingTime 
+            ? `<p class="crafting-text"><b>⏱ Schmiedezeit:</b> ${i.craftingTime}</p>` 
+            : '';
 
         const masteryTag = i.mastery 
             ? `<div class="mastery-tag">✨ Mastery: ${i.mastery}</div>` 
@@ -41,6 +49,7 @@ function render(list) {
                 <p><b>Typ:</b> ${i.type || 'Ausrüstung'}</p>
                 <p><b>Preis:</b> ${i.cost || '-'} | <b>Gewicht:</b> ${i.weight || '-'}</p>
                 ${details}
+                ${craftingDisplay}
                 <p class="description-text">${i.properties || ''}</p>
             </div>
             ${masteryTag}

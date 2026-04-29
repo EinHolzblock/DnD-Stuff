@@ -1,12 +1,11 @@
 {
-        "ac": "",
         "category": "Weapon",
+        "name": "",
         "cost": "",
         "damage": "",
         "mastery": "",
-        "name": "",
         "properties": "",
-        "source": "PHB 2024",
+        "source": "",
         "type": "Simple Melee/Ranged Weapon // Martial Melee/Ranged Weapon",
         "weight": ""
-    }
+}
