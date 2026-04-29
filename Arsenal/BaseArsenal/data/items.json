@@ -76,5 +76,130 @@
         "source": "PHB 2024",
         "type": "Simple Melee Weapon",
         "weight": "1 kg"
+    },
+    {
+        "ac": "",
+        "category": "Weapon",
+        "cost": "1 GM",
+        "damage": "1d6 Stich",
+        "mastery": "Auslaugen",
+        "name": "Speer",
+        "properties": "Vielseitig (1d8), Wurfwaffe(Reichweite 6/18)",
+        "source": "PHB 2024",
+        "type": "Simple Melee Weapon",
+        "weight": "1,5 kg"
+    },
+    {
+        "name": "Streitkolben";
+        "category": "Weapon",
+        "cost": "5 GM",
+        "damage": "1d6 Wucht",
+        "mastery": "Auslaugen",
+        "source": "PHB 2024",
+        "weight": "2 kg"
+    },
+    {
+        "ac": "",
+        "category": "Weapon",
+        "cost": "5 SM",
+        "damage": "1d6 Stich",
+        "mastery": "Verlangsamen",
+        "name": "Wurfspeer",
+        "properties": "Wurfwaffe(Reichweite 36)",
+        "source": "PHB 2024",
+        "type": "Simple Melee Weapon",
+        "weight": "1 kg"
+    },
+        {
+        "ac": "",
+        "category": "Weapon",
+        "cost": "2 SM",
+        "damage": "1d8 Wucht",
+        "mastery": "Stoßen",
+        "name": "Zweihandknüppel",
+        "properties": "Zweihändig",
+        "source": "PHB 2024",
+        "type": "Simple Melee Weapon",
+        "weight": "5 kg"
+    },
+        {
+        "ac": "",
+        "category": "Weapon",
+        "cost": "25 GM",
+        "damage": "1d6 Stich",
+        "mastery": "Plagen",
+        "name": "Kurzbogen",
+        "properties": "Geschosse (Reichweite 24/96, Pfeil), Zweihändig",
+        "source": "PHB 2024",
+        "type": "Simple Ranged Weapon",
+        "weight": "1 kg"
+    },
+    {
+        "ac": "",
+        "category": "Weapon",
+        "cost": "25 GM",
+        "damage": "1d8 Stich",
+        "mastery": "Verlangsamen",
+        "name": "Leichte Armbrust",
+        "properties": "Geschosse(Reichweite 24/96, Bolzen), Laden, Zweihändig",
+        "source": "PHB 2024",
+        "type": "Simple Ranged Weapon",
+        "weight": "2,5 kg"
+    },
+    {
+        "ac": "",
+        "category": "Weapon",
+        "cost": "1 SM",
+        "damage": "1d4 Wucht",
+        "mastery": "Verlangsamen",
+        "name": "Schleuder",
+        "properties": "Geschosse(Reichweite 9/36, Kugel)",
+        "source": "PHB 2024",
+        "type": "Simple Ranged Weapon",
+        "weight": " - "
+    },
+    {
+        "ac": "",
+        "category": "Weapon",
+        "cost": "5 KM",
+        "damage": "1d4 Stich",
+        "mastery": "Plagen",
+        "name": "Wurfpfeil",
+        "properties": "Finesse, Wurfwaffe(Reichweite 6/18)",
+        "source": "PHB 2024",
+        "type": "Simple Ranged Weapon",
+        "weight": "125 g"
+    },
+    {
+        "ac": "",
+        "category": "Weapon",
+        "cost": "5 GM",
+        "damage": "1d8 Stich",
+        "mastery": "Umstoßen",
+        "name": "Dreizack",
+        "properties": "Vielseitig(1d10), Wurfwaffe(Reichweite 6/18)",
+        "source": "PHB 2024",
+        "type": "Martial Melee Weapon",
+        "weight": "2 kg"
+    },
+    {
+        "ac": "",
+        "category": "Weapon",
+        "cost": "10 GM",
+        "damage": "1d8 Wucht",
+        "mastery": "Auslaugen",
+        "name": "Flegel",
+        "properties": "",
+        "source": "PHB 2024",
+        "type": "Martial Melee Weapon",
+        "weight": "1 kg"
     }
+]
+
+]
+
+]
+
+]
+
 ]
