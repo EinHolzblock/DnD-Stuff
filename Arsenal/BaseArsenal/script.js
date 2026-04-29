@@ -20,7 +20,7 @@ function render(list) {
 
     list.forEach(i => {
         const div = document.createElement('div');
-        div.className = 'card'; // This is the most important class!
+        div.className = 'card'; 
         
         let details = "";
         if (i.category === "Weapon") {
@@ -38,7 +38,7 @@ function render(list) {
         div.innerHTML = `
             <div class="card-content">
                 <h3>${i.name}</h3>
-                <p><b>Typ:</b> ${i.type}</p>
+                <p><b>Typ:</b> ${i.type || 'Ausrüstung'}</p>
                 <p><b>Preis:</b> ${i.cost || '-'} | <b>Gewicht:</b> ${i.weight || '-'}</p>
                 ${details}
                 <p class="description-text">${i.properties || ''}</p>
@@ -51,22 +51,23 @@ function render(list) {
 }
 
 function applyFilters() {
+    // 1. Get values from ALL three inputs
     const nameSearch = document.getElementById('searchName').value.toLowerCase();
-    const typeFilter = document.getElementById('filterType').value;
-    const subTypeFilter = document.getElementById('filterSubType').value;
+    const categoryValue = document.getElementById('filterType').value;
+    const subTypeValue = document.getElementById('filterSubType').value;
 
     const filtered = items.filter(i => {
+        // Name Search
         const matchesName = i.name.toLowerCase().includes(nameSearch);
         
-        // Match Category (Handling the plural/singular issue)
-        // If your JSON uses "Weapon", change the HTML value to "Weapon" 
-        // OR use .startsWith() as a safety net:
-        const matchesType = typeFilter === "" || i.category === typeFilter;
+        // Category Filter (Weapon, Armor, Gear)
+        const matchesCategory = categoryValue === "" || i.category === categoryValue;
 
-        // Match Sub-Type (e.g., "Simple Melee Weapon")
-        const matchesSubType = subTypeFilter === "" || i.type === subTypeFilter;
+        // Sub-Type Filter (Simple Melee, Martial Ranged, etc.)
+        // Added (i.type || "") to handle items like 'Streitkolben' that are missing the type key
+        const matchesSubType = subTypeValue === "" || (i.type || "") === subTypeValue;
 
-        return matchesName && matchesType && matchesSubType;
+        return matchesName && matchesCategory && matchesSubType;
     });
 
     render(filtered);
@@ -77,10 +78,12 @@ function toggleMenu() {
     if (menu) menu.classList.toggle('hidden');
 }
 
+// Wire everything up when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     loadData();
 
-    // Trigger filtering whenever the user types or changes the dropdown
+    // These tell the browser: "When the user interacts with these, run applyFilters"
     document.getElementById('searchName').addEventListener('input', applyFilters);
     document.getElementById('filterType').addEventListener('change', applyFilters);
+    document.getElementById('filterSubType').addEventListener('change', applyFilters);
 });
