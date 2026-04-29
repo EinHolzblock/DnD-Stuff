@@ -3,10 +3,12 @@
  */
 document.addEventListener("DOMContentLoaded", () => {
     const authorizedDomain = "einholzblock.github.io"; // Deine Domain
-    const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+    const currentHost = window.location.hostname;
+    const allowedHosts = [authorizedDomain, `www.${authorizedDomain}`];
+    const isLocal = currentHost === "localhost" || currentHost === "127.0.0.1";
     
     // 1. Prüfen, ob wir auf einer fremden Domain sind
-    if (!window.location.hostname.includes(authorizedDomain) && !isLocal) {
+    if (!allowedHosts.includes(currentHost) && !isLocal) {
         
         // 2. Suchen, ob ein Link zu deinem GitHub existiert
         const creditsExist = Array.from(document.querySelectorAll('a')).some(link => 
