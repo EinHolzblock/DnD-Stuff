@@ -67,4 +67,10 @@ function toggleMenu() {
     if (menu) menu.classList.toggle('hidden');
 }
 
-document.addEventListener('DOMContentLoaded', loadData);
+document.addEventListener('DOMContentLoaded', () => {
+    loadData();
+
+    // Trigger filtering whenever the user types or changes the dropdown
+    document.getElementById('searchName').addEventListener('input', applyFilters);
+    document.getElementById('filterType').addEventListener('change', applyFilters);
+});
