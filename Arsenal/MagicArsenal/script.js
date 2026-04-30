@@ -43,4 +43,13 @@ function applyFilters() {
 }
 
 function toggleMenu() { document.getElementById('nav-menu').classList.toggle('hidden'); }
-document.addEventListener('DOMContentLoaded', loadItems);
+document.addEventListener('DOMContentLoaded', () => {
+    loadItems(); // Your existing call
+
+    // Link the search bar
+    document.getElementById('searchName').addEventListener('input', applyFilters);
+    
+    // Link the dropdown
+    document.getElementById('filterRarity').addEventListener('change', applyFilters);
+});
+
