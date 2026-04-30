@@ -22,21 +22,22 @@ function render(list) {
         const div = document.createElement('div');
         div.className = 'card'; 
         
-        // 1. Category Specific Logic (Damage, AC, etc.)
-        let details = "";
+        // 1. Stats (Always shows if it's Weapon/Armor)
+        let stats = "";
         if (i.category === "Weapon") {
-            details = `<p><b>Schaden:</b> ${i.damage || '-'}</p>`;
+            stats = `<p><b>Schaden:</b> ${i.damage || '-'}</p>`;
         } else if (i.category === "Armor") {
             const strReq = i.str ? `<p><b>Stärke:</b> ${i.str}</p>` : '';
             const stealthDis = i.stealth ? `<p><b>Heimlichkeit:</b> Nachteil</p>` : '';
-            details = `<p><b>RK (AC):</b> ${i.ac || '-'}</p>${strReq}${stealthDis}`;
-        } else {
-            details = i.description ? `<p class="description-text">${i.description}</p>` : "";
+            stats = `<p><b>RK (AC):</b> ${i.ac || '-'}</p>${strReq}${stealthDis}`;
         }
 
-        // 2. Crafting Time Logic (Shows for any item if key exists)
-        const craftingDisplay = i.craftingTime 
-            ? `<p class="crafting-text"><b>⏱ Crafting Time:</b> ${i.craftingTime}</p>` 
+        // 2. Collapsible Description (Only shows if text exists)
+        const descriptionCollapsible = i.description 
+            ? `<details class="item-details-toggle">
+                 <summary>Beschreibung anzeigen...</summary>
+                 <div class="description-content">${i.description}</div>
+               </details>` 
             : '';
 
         const masteryTag = i.mastery 
@@ -48,9 +49,9 @@ function render(list) {
                 <h3>${i.name}</h3>
                 <p><b>Typ:</b> ${i.type || 'Ausrüstung'}</p>
                 <p><b>Preis:</b> ${i.cost || '-'} | <b>Gewicht:</b> ${i.weight || '-'}</p>
-                ${details}
-                ${craftingDisplay}
-                <p class="description-text">${i.properties || ''}</p>
+                ${stats}
+                <p class="properties-text"><i>${i.properties || ''}</i></p>
+                ${descriptionCollapsible}
             </div>
             ${masteryTag}
             <span class="source-tag">${i.source || 'PHB 2024'}</span>
